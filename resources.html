@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Resources | Cyber Suraksha</title>
+  <meta name="description" content="Comprehensive cybersecurity reference guides, downloadable awareness resources, emergency hotlines, and security glossaries.">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Cyber Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-cyber fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-shield-lock-fill"></i>
+        </div>
+        <span>Cyber <span class="text-cyan">Suraksha</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cyberNavbar" aria-controls="cyberNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="cyberNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="threats.html">Cyber Threats</a></li>
+          <li class="nav-item"><a class="nav-link" href="tools.html">Security Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="mfa.html">MFA</a></li>
+          <li class="nav-item"><a class="nav-link" href="awareness.html">Awareness</a></li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link active" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a href="login.html" class="btn btn-cyber-primary btn-sm px-3 py-2">
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="hero-section pb-4" style="padding-top: 7rem;">
+    <div class="container text-center">
+      <span class="hero-tag">
+        <i class="bi bi-folder-fill"></i> KNOWLEDGE BASE & OFFICIAL HELPLINES
+      </span>
+      <h1 class="display-4 fw-bold text-white mb-3">Cybersecurity Resources</h1>
+      <p class="lead text-secondary mx-auto" style="max-width: 780px;">
+        Curated educational guides, incident reporting protocols, terminology glossaries, and emergency response directories for students, professionals, and home users.
+      </p>
+    </div>
+  </section>
+
+  <!-- 8 Resources Cards Grid (Required) -->
+  <section class="py-5">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Core Guides</span>
+        <h2 class="section-title">Educational Security Handbooks</h2>
+      </div>
+
+      <div class="row g-4">
+        <!-- 1. Password Safety -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-box">
+                <i class="bi bi-key-fill"></i>
+              </div>
+              <h5 class="text-white mb-2">Password Safety</h5>
+              <p class="text-secondary small mb-3">
+                Master the principles of passphrase generation, password managers, and mitigating credential stuffing risks.
+              </p>
+            </div>
+            <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#resModal1">
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Phishing Awareness -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-box">
+                <i class="bi bi-envelope-open-fill"></i>
+              </div>
+              <h5 class="text-white mb-2">Phishing Awareness</h5>
+              <p class="text-secondary small mb-3">
+                Comprehensive dissection of spear phishing, CEO fraud, fake invoice scams, and malicious email headers.
+              </p>
+            </div>
+            <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#resModal2">
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. MFA Guide -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-box">
+                <i class="bi bi-phone-vibrate-fill"></i>
+              </div>
+              <h5 class="text-white mb-2">MFA Guide</h5>
+              <p class="text-secondary small mb-3">
+                Step-by-step instructions for deploying hardware security keys (FIDO2) and TOTP authenticator applications.
+              </p>
+            </div>
+            <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#resModal3">
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Privacy Protection -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-box">
+                <i class="bi bi-eye-slash-fill"></i>
+              </div>
+              <h5 class="text-white mb-2">Privacy Protection</h5>
+              <p class="text-secondary small mb-3">
+                How to audit telemetry, block third-party trackers, manage cookie consent, and protect personally identifiable data.
+              </p>
+            </div>
+            <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#resModal4">
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. Safe Browsing -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-box">
+                <i class="bi bi-browser-chrome"></i>
+              </div>
+              <h5 class="text-white mb-2">Safe Browsing</h5>
+              <p class="text-secondary small mb-3">
+                Configuring DNS-over-HTTPS, ad-blockers, verifying SSL/TLS certificates, and recognizing drive-by malicious downloads.
+              </p>
+            </div>
+            <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#resModal5">
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. Social Media Security -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-box">
+                <i class="bi bi-share-fill"></i>
+              </div>
+              <h5 class="text-white mb-2">Social Media Security</h5>
+              <p class="text-secondary small mb-3">
+                Guarding against profile impersonation, malicious DM links, over-sharing vulnerabilities, and account hijacking.
+              </p>
+            </div>
+            <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#resModal6">
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 7. Mobile Security -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-box">
+                <i class="bi bi-phone-fill"></i>
+              </div>
+              <h5 class="text-white mb-2">Mobile Security</h5>
+              <p class="text-secondary small mb-3">
+                Securing UPI and banking apps, revoking dangerous app permissions, avoiding rogue APKs, and SIM-swap defense.
+              </p>
+            </div>
+            <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#resModal7">
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 8. Cybersecurity Basics -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between">
+            <div>
+              <div class="card-icon-box">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h5 class="text-white mb-2">Cybersecurity Basics</h5>
+              <p class="text-secondary small mb-3">
+                Fundamental principles of the CIA Triad (Confidentiality, Integrity, Availability), firewall concepts, and defense in depth.
+              </p>
+            </div>
+            <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#resModal8">
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Helplines Section (Required for Section 13/Emergency Help) -->
+  <section class="py-5 bg-secondary bg-opacity-5" id="helpline">
+    <div class="container py-3">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Official Response</span>
+        <h2 class="section-title">Emergency Incident & Helpline Directory</h2>
+        <p class="section-description">If you have been targeted by financial cyber fraud or identity theft, report it immediately to official cyber cells.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="cyber-card border-danger border-opacity-30">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="badge bg-danger bg-opacity-20 text-danger p-3 rounded fs-4">
+                <i class="bi bi-telephone-inbound-fill"></i>
+              </div>
+              <div>
+                <h5 class="text-white mb-1 fw-bold">National Cyber Helpline</h5>
+                <span class="badge bg-danger">Dial 1930</span>
+              </div>
+            </div>
+            <p class="text-secondary small mb-2">
+              Citizen Financial Cyber Fraud Reporting System. Immediately blocks fraudulent outflows from bank accounts when reported promptly.
+            </p>
+            <span class="text-cyan small font-mono">Toll-Free &bull; 24/7 Available</span>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="cyber-card border-primary border-opacity-30">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="badge bg-primary bg-opacity-20 text-cyan p-3 rounded fs-4">
+                <i class="bi bi-globe2"></i>
+              </div>
+              <div>
+                <h5 class="text-white mb-1 fw-bold">National Cyber Crime Portal</h5>
+                <span class="badge bg-primary">cybercrime.gov.in</span>
+              </div>
+            </div>
+            <p class="text-secondary small mb-2">
+              Official government portal for filing complaints regarding online scams, women & child harassment, hacking, and cyber blackmail.
+            </p>
+            <span class="text-cyan small font-mono">Official Indian Portal</span>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="cyber-card border-info border-opacity-30">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="badge bg-info bg-opacity-20 text-info p-3 rounded fs-4">
+                <i class="bi bi-shield-shaded"></i>
+              </div>
+              <div>
+                <h5 class="text-white mb-1 fw-bold">CERT-In Emergency</h5>
+                <span class="badge bg-info text-dark">cert-in.org.in</span>
+              </div>
+            </div>
+            <p class="text-secondary small mb-2">
+              Indian Computer Emergency Response Team. Publishes security vulnerability advisories and mitigates national cyber incidents.
+            </p>
+            <span class="text-cyan small font-mono">Incident Hotline: 1800-11-4949</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Cybersecurity Glossary Accordion -->
+  <section class="py-5">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Reference Glossary</span>
+        <h2 class="section-title">Cybersecurity Terms You Should Know</h2>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion" id="cyberGlossaryAccordion">
+            <!-- Item 1 -->
+            <div class="accordion-item bg-card border-secondary border-opacity-25 mb-2 rounded overflow-hidden">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <i class="bi bi-shield-check text-cyan me-2"></i> What is Zero-Day Vulnerability?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#cyberGlossaryAccordion">
+                <div class="accordion-body text-secondary small">
+                  A zero-day vulnerability is an undisclosed computer software flaw that hackers discover before the developers are aware of it. The term "zero-day" refers to the fact that developers have had zero days to patch it.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item bg-card border-secondary border-opacity-25 mb-2 rounded overflow-hidden">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <i class="bi bi-shield-check text-cyan me-2"></i> What is a VPN (Virtual Private Network)?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#cyberGlossaryAccordion">
+                <div class="accordion-body text-secondary small">
+                  A VPN encrypts your internet traffic through an authenticated tunnel and routes it through a remote server, masking your IP address and safeguarding your private data from snoopers on public Wi-Fi.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item bg-card border-secondary border-opacity-25 mb-2 rounded overflow-hidden">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <i class="bi bi-shield-check text-cyan me-2"></i> What is Credential Stuffing?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#cyberGlossaryAccordion">
+                <div class="accordion-body text-secondary small">
+                  An automated cyberattack where botnets test large databases of leaked username/password combinations across thousands of high-value sites (banking, social, shopping) to breach accounts that reuse passwords.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="accordion-item bg-card border-secondary border-opacity-25 rounded overflow-hidden">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <i class="bi bi-shield-check text-cyan me-2"></i> What is End-to-End Encryption (E2EE)?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#cyberGlossaryAccordion">
+                <div class="accordion-body text-secondary small">
+                  A secure communications protocol that prevents third parties (including internet service providers and telecom operators) from accessing plaintext data transferred from one endpoint to another.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals for 8 Resources -->
+  <!-- Resource Modal 1 -->
+  <div class="modal fade" id="resModal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white"><i class="bi bi-key-fill text-cyan me-2"></i> Password Safety Handbook</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Traditional password advice recommended frequent 30-day changes and arbitrary numbers. Modern NIST standards recommend:</p>
+          <ul>
+            <li><strong>Length is King:</strong> Use 14-16+ characters (passphrases like <code>CorrectHorseBatteryStaple!</code>).</li>
+            <li><strong>Password Managers:</strong> Rely on vaults like Bitwarden, KeePass, or 1Password.</li>
+            <li><strong>Breach Auditing:</strong> Check whether your email has leaked using trusted breach aggregators.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Modal 2 -->
+  <div class="modal fade" id="resModal2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white"><i class="bi bi-envelope-open-fill text-danger me-2"></i> Phishing Defense Handbook</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Phishing attacks succeed by evoking panic or greed. Remember the <strong>S.L.A.M.</strong> technique:</p>
+          <ul>
+            <li><strong>S - Sender:</strong> Inspect the actual email address, not just the display name.</li>
+            <li><strong>L - Links:</strong> Hover to see destination URLs before clicking.</li>
+            <li><strong>A - Attachments:</strong> Do not open unexpected .zip, .html, or .exe files.</li>
+            <li><strong>M - Message:</strong> Be alert to artificial urgency or pressure to bypass standard verification.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Modal 3 -->
+  <div class="modal fade" id="resModal3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white"><i class="bi bi-phone-vibrate-fill text-info me-2"></i> MFA Implementation Guide</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Rankings of MFA mechanisms from strongest to basic:</p>
+          <ol>
+            <li><strong>FIDO2 / WebAuthn Hardware Keys:</strong> Phishing-resistant physical USB/NFC devices.</li>
+            <li><strong>Time-based OTP Apps (TOTP):</strong> Google Authenticator, Aegis, Bitwarden.</li>
+            <li><strong>Push Notifications:</strong> Mobile app approval prompts with number matching.</li>
+            <li><strong>SMS / Email OTP:</strong> Better than nothing, but susceptible to SIM-swapping.</li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Modal 4 -->
+  <div class="modal fade" id="resModal4" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white"><i class="bi bi-eye-slash-fill text-warning me-2"></i> Privacy Protection Handbook</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Take charge of your personal digital footprint:</p>
+          <ul>
+            <li>Disable location access for apps that do not require navigation.</li>
+            <li>Revoke advertising IDs on iOS and Android devices.</li>
+            <li>Review and revoke inactive OAuth permissions ("Login with Google/Facebook").</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Modal 5 -->
+  <div class="modal fade" id="resModal5" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white"><i class="bi bi-browser-chrome text-success me-2"></i> Safe Web Browsing Protocol</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Protect against drive-by exploits and deceptive ads:</p>
+          <ul>
+            <li>Install reputable ad-blockers like uBlock Origin to eliminate malvertising.</li>
+            <li>Configure DNS-over-HTTPS (DoH) via Cloudflare (1.1.1.1) or Quad9 (9.9.9.9).</li>
+            <li>Keep your browser updated to patch JavaScript engine zero-days.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Modal 6 -->
+  <div class="modal fade" id="resModal6" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white"><i class="bi bi-share-fill text-primary me-2"></i> Social Media Hardening</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Avoid social engineering exploitation:</p>
+          <ul>
+            <li>Never publish real-time vacation check-ins until you have returned home.</li>
+            <li>Keep accounts private; do not accept follower requests from strangers.</li>
+            <li>Beware of clone accounts mimicking friends asking for urgent loans.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Modal 7 -->
+  <div class="modal fade" id="resModal7" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white"><i class="bi bi-phone-fill text-info me-2"></i> Mobile & UPI Security Guide</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>Rules for mobile devices and UPI / online payments:</p>
+          <ul>
+            <li>Remember: <strong>UPI PIN is entered only when SENDING money, never when receiving.</strong></li>
+            <li>Do not install remote desktop apps (AnyDesk, TeamViewer) at the request of an unknown caller.</li>
+            <li>Set up SIM-lock PIN with your telecom carrier to prevent SIM swapping.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Modal 8 -->
+  <div class="modal fade" id="resModal8" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white"><i class="bi bi-shield-check text-cyan me-2"></i> Cybersecurity Fundamentals</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-secondary small">
+          <p>The core triad of cybersecurity:</p>
+          <ul>
+            <li><strong>Confidentiality:</strong> Only authorized individuals can view the data.</li>
+            <li><strong>Integrity:</strong> Data remains accurate and unaltered during transit and storage.</li>
+            <li><strong>Availability:</strong> Authorized users have reliable access to systems when needed.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-cyber">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <span class="fs-4 fw-bold text-white">Cyber <span class="text-cyan">Suraksha</span></span>
+          </div>
+          <p class="text-secondary small mb-3">
+            “Building a safer and more cyber-aware digital world.”
+          </p>
+          <p class="text-muted small">
+            Designed as an academic project demonstrating cybersecurity awareness, threat mitigation, and digital protection.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3">Navigation</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="threats.html" class="footer-link">Cyber Threats</a></li>
+            <li><a href="tools.html" class="footer-link">Security Tools</a></li>
+            <li><a href="mfa.html" class="footer-link">MFA Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3">Education & Help</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="awareness.html" class="footer-link">Safety Tips</a></li>
+            <li><a href="quiz.html" class="footer-link">Cyber Awareness Quiz</a></li>
+            <li><a href="dashboard.html" class="footer-link">User Dashboard</a></li>
+            <li><a href="resources.html" class="footer-link">Cyber Resources</a></li>
+            <li><a href="contact.html" class="footer-link">Emergency Contacts</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-white fw-bold mb-3">Academic Project</h6>
+          <div class="p-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25 small text-secondary">
+            <p class="mb-1 text-cyan fw-bold"><i class="bi bi-laptop me-1"></i> College Project 2026</p>
+            <p class="mb-1">Subject: Cybersecurity & Digital Safety</p>
+            <p class="mb-0 text-muted">Technologies: HTML5, CSS3, JS, Bootstrap 5</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="mb-0">&copy; 2026 Cyber Suraksha. All Rights Reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="resources.html" class="text-muted text-decoration-none small">Privacy Policy</a>
+          <span class="text-muted">&bull;</span>
+          <a href="resources.html" class="text-muted text-decoration-none small">Terms & Conditions</a>
+          <span class="text-muted">&bull;</span>
+          <a href="contact.html" class="text-muted text-decoration-none small">Help Center</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Cyber JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

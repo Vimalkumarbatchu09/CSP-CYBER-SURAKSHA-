@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Dashboard | Cyber Suraksha</title>
+  <meta name="description" content="View your simulated personal cybersecurity posture, safety score, activity audit log, and protective recommendations.">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Cyber Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-cyber fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-shield-lock-fill"></i>
+        </div>
+        <span>Cyber <span class="text-cyan">Suraksha</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cyberNavbar" aria-controls="cyberNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="cyberNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="threats.html">Cyber Threats</a></li>
+          <li class="nav-item"><a class="nav-link" href="tools.html">Security Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="mfa.html">MFA</a></li>
+          <li class="nav-item"><a class="nav-link" href="awareness.html">Awareness</a></li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a href="login.html" class="btn btn-cyber-primary btn-sm px-3 py-2">
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="hero-section pb-4" style="padding-top: 7rem;">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div>
+          <span class="hero-tag">
+            <span class="status-indicator-dot dot-green pulse-dot"></span>
+            <span>SYSTEM DEFENSE AUDIT &bull; MOCK DEMO</span>
+          </span>
+          <h1 class="display-5 fw-bold text-white mb-1">Cyber Security Dashboard</h1>
+          <p class="text-secondary mb-0">Overview of account defense metrics, recent safety activities, and posture analysis.</p>
+        </div>
+        <div>
+          <button class="btn btn-cyber-primary" id="btnStartSecurityScan">
+            <i class="bi bi-radar me-1"></i> Run Quick Security Scan
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Overview Grid -->
+  <section class="py-4">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Column 1: Overall Security Score (82 / 100) Circular Indicator -->
+        <div class="col-lg-4">
+          <div class="cyber-card text-center d-flex flex-column justify-content-center p-4">
+            <h5 class="text-white fw-bold mb-3">Overall Security Score</h5>
+
+            <!-- Circular SVG Indicator -->
+            <div class="circular-progress-wrap mb-3">
+              <svg class="circular-progress-svg" width="170" height="170" viewBox="0 0 160 160">
+                <defs>
+                  <linearGradient id="cyanBlueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00f2fe" />
+                    <stop offset="100%" stop-color="#2563eb" />
+                  </linearGradient>
+                </defs>
+                <circle class="circle-bg" cx="80" cy="80" r="68"></circle>
+                <!-- Circumference = 2 * PI * 68 ≈ 427. 82% filled = offset: 427 * (1 - 0.82) ≈ 76.8 -->
+                <circle class="circle-progress" cx="80" cy="80" r="68" stroke-dasharray="427" stroke-dashoffset="77"></circle>
+              </svg>
+              <div class="circle-inner-text">
+                <span class="display-5 fw-bold text-white font-mono">82</span>
+                <span class="text-muted small">/ 100</span>
+              </div>
+            </div>
+
+            <span class="badge badge-safe px-3 py-2 fs-6 mx-auto mb-2">
+              <i class="bi bi-shield-check me-1"></i> Protected Status
+            </span>
+            <p class="text-secondary small mb-0">
+              Your device posture and account credentials demonstrate high resilience. 2 non-critical optimizations suggested.
+            </p>
+          </div>
+        </div>
+
+        <!-- Column 2: Detailed Security Status Breakdown (5 Required Items) -->
+        <div class="col-lg-8">
+          <div class="cyber-card p-4">
+            <h5 class="text-white fw-bold mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-sliders text-cyan"></i> Security Status Breakdown
+            </h5>
+
+            <!-- 1. Password Security -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="text-white fw-semibold small"><i class="bi bi-key-fill text-success me-2"></i> Password Security</span>
+                <span class="badge bg-success bg-opacity-20 text-success">Strong</span>
+              </div>
+              <div class="progress progress-cyber" style="height: 7px;">
+                <div class="progress-bar bg-success" style="width: 90%;"></div>
+              </div>
+              <span class="text-muted" style="font-size: 0.75rem;">14+ characters, high entropy, zero reused passwords.</span>
+            </div>
+
+            <!-- 2. MFA -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="text-white fw-semibold small"><i class="bi bi-phone-vibrate text-info me-2"></i> Multi-Factor Authentication (MFA)</span>
+                <span class="badge bg-info bg-opacity-20 text-info">Enabled</span>
+              </div>
+              <div class="progress progress-cyber" style="height: 7px;">
+                <div class="progress-bar bg-info" style="width: 100%;"></div>
+              </div>
+              <span class="text-muted" style="font-size: 0.75rem;">Authenticator app bound to email & primary accounts.</span>
+            </div>
+
+            <!-- 3. Device Security -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="text-white fw-semibold small"><i class="bi bi-laptop text-primary me-2"></i> Device Security</span>
+                <span class="badge bg-primary bg-opacity-20 text-cyan">Good</span>
+              </div>
+              <div class="progress progress-cyber" style="height: 7px;">
+                <div class="progress-bar bg-primary" style="width: 80%;"></div>
+              </div>
+              <span class="text-muted" style="font-size: 0.75rem;">OS patched with latest security update, disk encryption active.</span>
+            </div>
+
+            <!-- 4. Cyber Awareness -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="text-white fw-semibold small"><i class="bi bi-mortarboard-fill text-warning me-2"></i> Cyber Awareness</span>
+                <span class="badge bg-warning bg-opacity-20 text-warning">85%</span>
+              </div>
+              <div class="progress progress-cyber" style="height: 7px;">
+                <div class="progress-bar bg-warning" style="width: 85%;"></div>
+              </div>
+              <span class="text-muted" style="font-size: 0.75rem;">Scored 85% on interactive cybersecurity assessment quiz.</span>
+            </div>
+
+            <!-- 5. Privacy Settings -->
+            <div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="text-white fw-semibold small"><i class="bi bi-eye-slash-fill text-warning me-2"></i> Privacy Settings</span>
+                <span class="badge badge-risk-medium">Moderate</span>
+              </div>
+              <div class="progress progress-cyber" style="height: 7px;">
+                <div class="progress-bar bg-warning" style="width: 60%;"></div>
+              </div>
+              <span class="text-muted" style="font-size: 0.75rem;">Review recommended: Social profile visibility is still set to public.</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Recent Activity Timeline & Action Items -->
+      <div class="row g-4 mt-2">
+        <!-- Activity Timeline -->
+        <div class="col-lg-7">
+          <div class="cyber-card p-4">
+            <h5 class="text-white fw-bold mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-clock-history text-cyan"></i> Recent Security Activity
+            </h5>
+
+            <div class="activity-timeline">
+              <!-- Item 1 -->
+              <div class="d-flex align-items-start gap-3 pb-3 mb-3 border-bottom border-secondary border-opacity-25">
+                <div class="badge bg-success bg-opacity-20 text-success p-2 rounded">
+                  <i class="bi bi-key-fill fs-5"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <strong class="text-white small">Password strength checked</strong>
+                    <span class="text-muted small">Today, 14:32</span>
+                  </div>
+                  <p class="text-secondary small mb-0">Evaluated master password entropy; rated Very Strong (16 chars).</p>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="d-flex align-items-start gap-3 pb-3 mb-3 border-bottom border-secondary border-opacity-25">
+                <div class="badge bg-primary bg-opacity-20 text-cyan p-2 rounded">
+                  <i class="bi bi-mortarboard-fill fs-5"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <strong class="text-white small">Security quiz completed</strong>
+                    <span class="text-muted small">Yesterday</span>
+                  </div>
+                  <p class="text-secondary small mb-0">Earned Cyber Guardian rank with 85% correct responses.</p>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="d-flex align-items-start gap-3 pb-3 mb-3 border-bottom border-secondary border-opacity-25">
+                <div class="badge bg-info bg-opacity-20 text-info p-2 rounded">
+                  <i class="bi bi-shield-check fs-5"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <strong class="text-white small">MFA awareness viewed</strong>
+                    <span class="text-muted small">2 days ago</span>
+                  </div>
+                  <p class="text-secondary small mb-0">Explored 3 authentication factors and verified 2FA setup guide.</p>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="d-flex align-items-start gap-3">
+                <div class="badge bg-warning bg-opacity-20 text-warning p-2 rounded">
+                  <i class="bi bi-check2-square fs-5"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <strong class="text-white small">Cyber safety checklist updated</strong>
+                    <span class="text-muted small">3 days ago</span>
+                  </div>
+                  <p class="text-secondary small mb-0">Completed 7 of 8 checklist action items (88% compliance).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Recommended Actions -->
+        <div class="col-lg-5">
+          <div class="cyber-card p-4">
+            <h5 class="text-white fw-bold mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-lightning-charge text-warning"></i> Recommended Actions
+            </h5>
+
+            <div class="p-3 mb-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="text-white small">Audit Social Privacy</strong>
+                <span class="badge badge-risk-medium">High Impact</span>
+              </div>
+              <p class="text-secondary small mb-2">Restrict publicly visible friends lists and past location check-ins.</p>
+              <a href="awareness.html" class="small text-cyan text-decoration-none">Review Privacy Tips <i class="bi bi-arrow-right"></i></a>
+            </div>
+
+            <div class="p-3 mb-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="text-white small">Verify Offline Backups</strong>
+                <span class="badge badge-safe">Best Practice</span>
+              </div>
+              <p class="text-secondary small mb-2">Ensure your external drive backup is disconnected from the network.</p>
+              <a href="tools.html#checklist-tool" class="small text-cyan text-decoration-none">Update Checklist <i class="bi bi-arrow-right"></i></a>
+            </div>
+
+            <div class="p-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="text-white small">Emergency Action Plan</strong>
+                <span class="badge badge-safe">Awareness</span>
+              </div>
+              <p class="text-secondary small mb-2">Know what to do if you suspect an account compromise.</p>
+              <a href="resources.html#helpline" class="small text-cyan text-decoration-none">View Cyber Helplines <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Security Scan Modal (Simulated in JS) -->
+  <div class="modal fade" id="securityScanModal" tabindex="-1" aria-labelledby="securityScanModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="securityScanModalLabel">
+            <i class="bi bi-radar text-cyan me-2"></i> Cyber Suraksha Diagnostic Scanner
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="scanStatusMessage" class="text-secondary small mb-2">Initializing simulated security probes...</p>
+          <div class="progress progress-cyber mb-3" style="height: 10px;">
+            <div id="scanModalProgress" class="progress-bar" style="width: 10%;"></div>
+          </div>
+
+          <!-- Terminal output window -->
+          <div id="scanTerminalLog" class="p-3 rounded bg-dark border border-secondary border-opacity-50 small" style="height: 180px; overflow-y: auto; font-family: monospace;">
+            <div class="text-muted">> Ready to inspect local environment...</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-cyber-primary btn-sm d-none" id="scanDoneBtn" data-bs-dismiss="modal">
+            <i class="bi bi-check2-circle me-1"></i> Scan Completed (Dismiss)
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-cyber">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <span class="fs-4 fw-bold text-white">Cyber <span class="text-cyan">Suraksha</span></span>
+          </div>
+          <p class="text-secondary small mb-3">
+            “Building a safer and more cyber-aware digital world.”
+          </p>
+          <p class="text-muted small">
+            Designed as an academic project demonstrating cybersecurity awareness, threat mitigation, and digital protection.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3">Navigation</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="threats.html" class="footer-link">Cyber Threats</a></li>
+            <li><a href="tools.html" class="footer-link">Security Tools</a></li>
+            <li><a href="mfa.html" class="footer-link">MFA Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3">Education & Help</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="awareness.html" class="footer-link">Safety Tips</a></li>
+            <li><a href="quiz.html" class="footer-link">Cyber Awareness Quiz</a></li>
+            <li><a href="dashboard.html" class="footer-link">User Dashboard</a></li>
+            <li><a href="resources.html" class="footer-link">Cyber Resources</a></li>
+            <li><a href="contact.html" class="footer-link">Emergency Contacts</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-white fw-bold mb-3">Academic Project</h6>
+          <div class="p-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25 small text-secondary">
+            <p class="mb-1 text-cyan fw-bold"><i class="bi bi-laptop me-1"></i> College Project 2026</p>
+            <p class="mb-1">Subject: Cybersecurity & Digital Safety</p>
+            <p class="mb-0 text-muted">Technologies: HTML5, CSS3, JS, Bootstrap 5</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="mb-0">&copy; 2026 Cyber Suraksha. All Rights Reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="resources.html" class="text-muted text-decoration-none small">Privacy Policy</a>
+          <span class="text-muted">&bull;</span>
+          <a href="resources.html" class="text-muted text-decoration-none small">Terms & Conditions</a>
+          <span class="text-muted">&bull;</span>
+          <a href="contact.html" class="text-muted text-decoration-none small">Help Center</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Cyber JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Tools | Cyber Suraksha</title>
+  <meta name="description" content="Interactive client-side cybersecurity tools: Password Strength Checker, Phishing Awareness Simulator, and Digital Security Checklist.">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Cyber Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-cyber fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-shield-lock-fill"></i>
+        </div>
+        <span>Cyber <span class="text-cyan">Suraksha</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cyberNavbar" aria-controls="cyberNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="cyberNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="threats.html">Cyber Threats</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tools.html">Security Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="mfa.html">MFA</a></li>
+          <li class="nav-item"><a class="nav-link" href="awareness.html">Awareness</a></li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a href="login.html" class="btn btn-cyber-primary btn-sm px-3 py-2">
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="hero-section pb-4" style="padding-top: 7rem;">
+    <div class="container text-center">
+      <span class="hero-tag">
+        <i class="bi bi-tools"></i> CLIENT-SIDE DEFENSE UTILITIES
+      </span>
+      <h1 class="display-4 fw-bold text-white mb-3">Interactive Security Tools</h1>
+      <p class="lead text-secondary mx-auto" style="max-width: 780px;">
+        Hands-on demonstration tools to evaluate credential safety, test suspicious messages against phishing heuristics, and calculate your personal digital hygiene score.
+      </p>
+    </div>
+  </section>
+
+  <!-- 1. Password Strength Checker -->
+  <section class="py-5" id="password-tool">
+    <div class="container">
+      <div class="tool-box-container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge bg-primary bg-opacity-20 text-cyan px-3 py-1">Tool #1</span>
+              <span class="text-muted small font-mono">Real-Time Evaluation</span>
+            </div>
+            <h3 class="text-white fw-bold mb-3">Password Strength Checker</h3>
+            <p class="text-secondary mb-4">
+              Type or paste a password below to evaluate its strength, character diversity, and estimated time to crack. 
+            </p>
+
+            <div class="alert alert-dark border border-secondary border-opacity-25 small text-secondary d-flex align-items-start gap-2 mb-4">
+              <i class="bi bi-shield-lock-fill text-cyan fs-5"></i>
+              <div>
+                <strong class="text-white">Strict Privacy Guarantee:</strong>
+                All calculations happen 100% locally in your browser via JavaScript. Your password is never transmitted across the network, logged, or stored anywhere.
+              </div>
+            </div>
+
+            <!-- Input and Eye Toggle -->
+            <label class="form-label text-light" for="pwdInput">Enter your password</label>
+            <div class="input-group mb-3">
+              <input type="password" id="pwdInput" class="form-control cyber-input form-control-lg" placeholder="Type a password to test..." autocomplete="off">
+              <button class="btn btn-cyber-outline" type="button" id="togglePwdVisibility" title="Toggle password visibility">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-secondary small">Strength Level: <span id="pwdStrengthLabel" class="fw-bold text-muted">Enter a password</span></span>
+              <span class="text-secondary small">Est. Time to Crack: <span id="pwdCrackTime" class="font-mono text-cyan fw-bold">Instant</span></span>
+            </div>
+
+            <div class="strength-meter-wrapper">
+              <div id="pwdStrengthBar" class="strength-meter-bar"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="p-4 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25">
+              <h5 class="text-white fw-bold mb-3"><i class="bi bi-card-checklist text-cyan me-2"></i> Security Criteria:</h5>
+              <div class="row g-2 mb-4">
+                <div class="col-sm-6 rule-check-item" id="rule-len"><i class="bi bi-circle"></i> Minimum 8+ Characters</div>
+                <div class="col-sm-6 rule-check-item" id="rule-upper"><i class="bi bi-circle"></i> Uppercase Letters (A-Z)</div>
+                <div class="col-sm-6 rule-check-item" id="rule-lower"><i class="bi bi-circle"></i> Lowercase Letters (a-z)</div>
+                <div class="col-sm-6 rule-check-item" id="rule-number"><i class="bi bi-circle"></i> Numbers (0-9)</div>
+                <div class="col-12 rule-check-item" id="rule-special"><i class="bi bi-circle"></i> Special Characters (@, #, $, %, etc.)</div>
+              </div>
+
+              <h6 class="text-white fw-bold mb-2"><i class="bi bi-lightbulb-fill text-warning me-2"></i> Security Suggestions:</h6>
+              <ul id="pwdSuggestions" class="list-unstyled small mb-0">
+                <li class="text-muted"><i class="bi bi-info-circle me-1"></i> Enter a password to view real-time recommendations.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Phishing Awareness Checker -->
+  <section class="py-5 bg-secondary bg-opacity-5" id="phishing-tool">
+    <div class="container">
+      <div class="tool-box-container">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="badge bg-warning bg-opacity-20 text-warning px-3 py-1">Tool #2</span>
+          <span class="text-muted small font-mono">Heuristic Simulator</span>
+        </div>
+        <h3 class="text-white fw-bold mb-2">Phishing Awareness Checker</h3>
+        <p class="text-secondary mb-3">
+          Paste a suspicious URL or email/SMS message to examine common fraud indicators, deceptive typosquatting domains, urgency tactics, and unencrypted protocols.
+        </p>
+
+        <!-- Academic Disclaimer Badge -->
+        <div class="alert alert-warning bg-warning bg-opacity-10 border-warning border-opacity-25 text-warning small py-2 px-3 mb-4 d-flex align-items-center gap-2">
+          <i class="bi bi-exclamation-triangle-fill"></i>
+          <span><strong>College Project Demo:</strong> This tool demonstrates rule-based heuristics for educational awareness and is not a real-time security scanner.</span>
+        </div>
+
+        <!-- Quick Test Buttons -->
+        <div class="mb-3 d-flex gap-2 flex-wrap align-items-center">
+          <span class="text-secondary small fw-semibold">Try Quick Samples:</span>
+          <button class="btn btn-sm btn-outline-danger py-1" id="samplePhish1"><i class="bi bi-bug me-1"></i> Fake PayPal Link</button>
+          <button class="btn btn-sm btn-outline-warning py-1" id="samplePhish2"><i class="bi bi-chat-dots me-1"></i> Urgent Bank SMS</button>
+          <button class="btn btn-sm btn-outline-success py-1" id="sampleSafe"><i class="bi bi-check2 me-1"></i> Legitimate URL</button>
+        </div>
+
+        <label class="form-label text-light" for="phishingInput">Enter a suspicious message or URL</label>
+        <div class="input-group mb-3">
+          <input type="text" id="phishingInput" class="form-control cyber-input form-control-lg" placeholder="e.g. http://secure-paypa1-update.xyz/verify-urgent">
+          <button class="btn btn-cyber-primary" type="button" id="btnCheckPhishing">
+            <i class="bi bi-search me-1"></i> Analyze Threat
+          </button>
+        </div>
+
+        <!-- Results Output Area -->
+        <div id="phishingResult" class="d-none"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Cyber Security Checklist -->
+  <section class="py-5" id="checklist-tool">
+    <div class="container">
+      <div class="tool-box-container">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge bg-success bg-opacity-20 text-success px-3 py-1">Tool #3</span>
+              <span class="text-muted small font-mono">Posture Assessment</span>
+            </div>
+            <h3 class="text-white fw-bold mb-1">Cyber Security Checklist</h3>
+            <p class="text-secondary mb-0">Check off the essential security habits you follow to measure your personal digital readiness score.</p>
+          </div>
+          <div>
+            <button class="btn btn-cyber-outline btn-sm" id="btnResetChecklist">
+              <i class="bi bi-arrow-counterclockwise me-1"></i> Reset Checklist
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress Gauge Header -->
+        <div class="p-3 mb-4 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-white fw-bold">Overall Cyber Readiness: <span id="checklistPercent" class="text-cyan font-mono fs-5">0%</span></span>
+            <span id="checklistStatusBadge" class="badge badge-risk-critical">High Exposure</span>
+          </div>
+          <div class="progress progress-cyber" style="height: 12px;">
+            <div id="checklistProgressBar" class="progress-bar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Checkbox Items Form -->
+        <form id="cyberChecklistForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-card border border-secondary border-opacity-25 cyber-checkbox">
+                <div class="form-check">
+                  <input class="form-check-input checklist-item" type="checkbox" id="chk1">
+                  <label class="form-check-label text-light fw-medium" for="chk1">
+                    Enable Multi-Factor Authentication (MFA)
+                  </label>
+                  <p class="text-secondary small mb-0 mt-1 ps-1">Adds a second verification step to email and banking accounts.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-card border border-secondary border-opacity-25 cyber-checkbox">
+                <div class="form-check">
+                  <input class="form-check-input checklist-item" type="checkbox" id="chk2">
+                  <label class="form-check-label text-light fw-medium" for="chk2">
+                    Use Strong, Unique Passwords
+                  </label>
+                  <p class="text-secondary small mb-0 mt-1 ps-1">Never reuse credentials across multiple sites; use a password vault.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-card border border-secondary border-opacity-25 cyber-checkbox">
+                <div class="form-check">
+                  <input class="form-check-input checklist-item" type="checkbox" id="chk3">
+                  <label class="form-check-label text-light fw-medium" for="chk3">
+                    Update Software Regularly
+                  </label>
+                  <p class="text-secondary small mb-0 mt-1 ps-1">Apply OS and application patches promptly to close known vulnerabilities.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-card border border-secondary border-opacity-25 cyber-checkbox">
+                <div class="form-check">
+                  <input class="form-check-input checklist-item" type="checkbox" id="chk4">
+                  <label class="form-check-label text-light fw-medium" for="chk4">
+                    Avoid Suspicious Links & Attachments
+                  </label>
+                  <p class="text-secondary small mb-0 mt-1 ps-1">Verify sender addresses and never click shortened URLs from strangers.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-card border border-secondary border-opacity-25 cyber-checkbox">
+                <div class="form-check">
+                  <input class="form-check-input checklist-item" type="checkbox" id="chk5">
+                  <label class="form-check-label text-light fw-medium" for="chk5">
+                    Use Secure Wi-Fi Networks
+                  </label>
+                  <p class="text-secondary small mb-0 mt-1 ps-1">Use a VPN when connecting to airport, hotel, or coffee shop networks.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-card border border-secondary border-opacity-25 cyber-checkbox">
+                <div class="form-check">
+                  <input class="form-check-input checklist-item" type="checkbox" id="chk6">
+                  <label class="form-check-label text-light fw-medium" for="chk6">
+                    Backup Important Data
+                  </label>
+                  <p class="text-secondary small mb-0 mt-1 ps-1">Store offline or encrypted cloud backups to protect against ransomware.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-card border border-secondary border-opacity-25 cyber-checkbox">
+                <div class="form-check">
+                  <input class="form-check-input checklist-item" type="checkbox" id="chk7">
+                  <label class="form-check-label text-light fw-medium" for="chk7">
+                    Enable Device Lock
+                  </label>
+                  <p class="text-secondary small mb-0 mt-1 ps-1">Enforce biometric or 6+ digit PIN locks on smartphones and laptops.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3 rounded bg-card border border-secondary border-opacity-25 cyber-checkbox">
+                <div class="form-check">
+                  <input class="form-check-input checklist-item" type="checkbox" id="chk8">
+                  <label class="form-check-label text-light fw-medium" for="chk8">
+                    Review Account Privacy Settings
+                  </label>
+                  <p class="text-secondary small mb-0 mt-1 ps-1">Audit app permissions and restrict public visibility on social profiles.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-cyber">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <span class="fs-4 fw-bold text-white">Cyber <span class="text-cyan">Suraksha</span></span>
+          </div>
+          <p class="text-secondary small mb-3">
+            “Building a safer and more cyber-aware digital world.”
+          </p>
+          <p class="text-muted small">
+            Designed as an academic project demonstrating cybersecurity awareness, threat mitigation, and digital protection.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3">Navigation</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="threats.html" class="footer-link">Cyber Threats</a></li>
+            <li><a href="tools.html" class="footer-link">Security Tools</a></li>
+            <li><a href="mfa.html" class="footer-link">MFA Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3">Education & Help</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="awareness.html" class="footer-link">Safety Tips</a></li>
+            <li><a href="quiz.html" class="footer-link">Cyber Awareness Quiz</a></li>
+            <li><a href="dashboard.html" class="footer-link">User Dashboard</a></li>
+            <li><a href="resources.html" class="footer-link">Cyber Resources</a></li>
+            <li><a href="contact.html" class="footer-link">Emergency Contacts</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-white fw-bold mb-3">Academic Project</h6>
+          <div class="p-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25 small text-secondary">
+            <p class="mb-1 text-cyan fw-bold"><i class="bi bi-laptop me-1"></i> College Project 2026</p>
+            <p class="mb-1">Subject: Cybersecurity & Digital Safety</p>
+            <p class="mb-0 text-muted">Technologies: HTML5, CSS3, JS, Bootstrap 5</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="mb-0">&copy; 2026 Cyber Suraksha. All Rights Reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="resources.html" class="text-muted text-decoration-none small">Privacy Policy</a>
+          <span class="text-muted">&bull;</span>
+          <a href="resources.html" class="text-muted text-decoration-none small">Terms & Conditions</a>
+          <span class="text-muted">&bull;</span>
+          <a href="contact.html" class="text-muted text-decoration-none small">Help Center</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Cyber JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

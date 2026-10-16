@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Suraksha | Cybersecurity Awareness & Protection Platform</title>
+  <meta name="description" content="Cyber Suraksha empowers users with cybersecurity education, practical tools, threat intelligence, and digital safety guidance.">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Cyber Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-cyber fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-shield-lock-fill"></i>
+        </div>
+        <span>Cyber <span class="text-cyan">Suraksha</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cyberNavbar" aria-controls="cyberNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="cyberNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="threats.html">Cyber Threats</a></li>
+          <li class="nav-item"><a class="nav-link" href="tools.html">Security Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="mfa.html">MFA</a></li>
+          <li class="nav-item"><a class="nav-link" href="awareness.html">Awareness</a></li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a href="login.html" class="btn btn-cyber-primary btn-sm px-3 py-2">
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left Hero Content -->
+        <div class="col-lg-7 text-start">
+          <div class="hero-tag">
+            <span class="status-indicator-dot dot-green pulse-dot"></span>
+            <span>CYBER DEFENSE INITIATIVE 2026</span>
+          </div>
+
+          <h1 class="display-4 fw-black text-white mb-3" style="line-height: 1.15;">
+            Stay Safe. <br>
+            <span class="text-gradient">Stay Secure.</span> <br>
+            Stay Cyber Aware.
+          </h1>
+
+          <p class="lead text-secondary mb-4 pe-lg-4">
+            Cyber Suraksha helps users understand cyber threats, improve digital security, and develop safer online habits in an increasingly interconnected world.
+          </p>
+
+          <div class="d-flex gap-3 flex-wrap hero-cta-group mb-4">
+            <a href="tools.html" class="btn btn-cyber-primary">
+              <i class="bi bi-shield-check"></i> Explore Security
+            </a>
+            <a href="awareness.html" class="btn btn-cyber-outline">
+              <i class="bi bi-book-half"></i> Learn Cyber Safety
+            </a>
+          </div>
+
+          <!-- Academic Project Indicator -->
+          <div class="academic-badge d-inline-flex align-items-center gap-2">
+            <i class="bi bi-mortarboard-fill text-cyan"></i>
+            <span>College Academic Project Demonstration &bull; Frontend Evaluation 2026</span>
+          </div>
+        </div>
+
+        <!-- Right Visual & Security Status Card -->
+        <div class="col-lg-5 text-center mt-5 mt-lg-0 hero-shield-container">
+          <!-- Animated Radar Circles -->
+          <div class="cyber-radar-circle circle-1"></div>
+          <div class="cyber-radar-circle circle-2"></div>
+
+          <!-- Central Glowing Shield Icon -->
+          <div class="hero-shield-art mb-4">
+            <i class="bi bi-shield-shaded"></i>
+          </div>
+
+          <!-- Security Status Card (Required by specification) -->
+          <div class="hero-status-widget text-start">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="badge badge-safe">
+                <span class="status-indicator-dot dot-green me-1"></span> Live Security Status
+              </span>
+              <span class="text-muted font-mono small">ID: CS-2026-SHIELD</span>
+            </div>
+
+            <div class="mb-2">
+              <div class="d-flex justify-content-between text-secondary small mb-1">
+                <span><i class="bi bi-key-fill text-cyan me-1"></i> Password Security</span>
+                <span class="text-success fw-bold">Strong</span>
+              </div>
+              <div class="progress progress-cyber" style="height: 6px;">
+                <div class="progress-bar bg-success" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <div class="d-flex justify-content-between text-secondary small mb-1">
+                <span><i class="bi bi-fingerprint text-info me-1"></i> Account Protection</span>
+                <span class="text-info fw-bold">Good</span>
+              </div>
+              <div class="progress progress-cyber" style="height: 6px;">
+                <div class="progress-bar bg-info" style="width: 78%;"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between text-secondary small mb-1">
+                <span><i class="bi bi-mortarboard text-warning me-1"></i> Cyber Awareness</span>
+                <span class="text-warning fw-bold">85%</span>
+              </div>
+              <div class="progress progress-cyber" style="height: 6px;">
+                <div class="progress-bar bg-warning" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="pt-2 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+              <span class="text-white fw-bold"><i class="bi bi-check2-circle text-success me-1"></i> Overall Security:</span>
+              <span class="badge bg-success bg-opacity-20 text-success border border-success border-opacity-30 px-2 py-1">Protected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Cyber Metrics Banner -->
+  <section class="py-4 border-top border-bottom border-secondary border-opacity-10 bg-secondary bg-opacity-5">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-6 col-md-3">
+          <h3 class="fw-bold text-cyan font-mono mb-0">3.4 Billion</h3>
+          <p class="text-secondary small mb-0">Phishing Emails Sent Daily</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h3 class="fw-bold text-white font-mono mb-0">95%</h3>
+          <p class="text-secondary small mb-0">Breaches Caused by Human Error</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h3 class="fw-bold text-cyan font-mono mb-0">99.9%</h3>
+          <p class="text-secondary small mb-0">Attacks Blocked by Enabling MFA</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h3 class="fw-bold text-success font-mono mb-0">100%</h3>
+          <p class="text-secondary small mb-0">Zero-Cost Prevention Knowledge</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. About Cyber Suraksha Preview -->
+  <section class="py-5" id="about-preview">
+    <div class="container py-4">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Our Purpose</span>
+        <h2 class="section-title">About <span class="text-cyan">Cyber Suraksha</span></h2>
+        <p class="section-description">
+          Cyber Suraksha is a cybersecurity awareness platform designed to educate users about common cyber threats and provide practical guidance for protecting their digital identity, accounts, devices, and personal information.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Pillar 1 -->
+        <div class="col-md-4">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-eye-fill"></i>
+            </div>
+            <h4 class="text-white mb-2">Cyber Awareness</h4>
+            <p class="text-secondary mb-3">
+              Learn about common cyber threats, deceptive social engineering tactics, and emerging online risks before they cause harm.
+            </p>
+            <a href="awareness.html" class="text-cyan text-decoration-none fw-semibold small">
+              Explore Awareness <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="col-md-4">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-shield-fill-check"></i>
+            </div>
+            <h4 class="text-white mb-2">Digital Protection</h4>
+            <p class="text-secondary mb-3">
+              Understand how to safeguard your social media accounts, mobile devices, net banking profiles, and personal identity.
+            </p>
+            <a href="mfa.html" class="text-cyan text-decoration-none fw-semibold small">
+              Discover Protection <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="col-md-4">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-compass-fill"></i>
+            </div>
+            <h4 class="text-white mb-2">Security Guidance</h4>
+            <p class="text-secondary mb-3">
+              Get simple, actionable, and non-technical cybersecurity recommendations to build resilient online defense habits.
+            </p>
+            <a href="resources.html" class="text-cyan text-decoration-none fw-semibold small">
+              Read Guidelines <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Featured Cyber Threats Preview -->
+  <section class="py-5 bg-secondary bg-opacity-5" id="threats-preview">
+    <div class="container py-4">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Risk Intelligence</span>
+        <h2 class="section-title">Know the Threats Before They Strike</h2>
+        <p class="section-description">
+          Modern cyber criminals exploit deception, psychological pressure, and weak passwords. Explore our core threat modules.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Threat 1: Phishing -->
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-icon-box mb-0">
+                <i class="bi bi-envelope-exclamation-fill"></i>
+              </div>
+              <span class="badge badge-risk-critical">Critical</span>
+            </div>
+            <h5 class="text-white mb-2">Phishing</h5>
+            <p class="text-secondary small mb-3">
+              Deceptive emails, fake portals, and urgent messages engineered to steal passwords, credit cards, and OTPs.
+            </p>
+            <a href="threats.html" class="btn btn-cyber-outline btn-sm w-100">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Threat 2: Malware -->
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-icon-box mb-0">
+                <i class="bi bi-bug-fill"></i>
+              </div>
+              <span class="badge badge-risk-high">High</span>
+            </div>
+            <h5 class="text-white mb-2">Malware</h5>
+            <p class="text-secondary small mb-3">
+              Malicious software including viruses, spyware, and trojans designed to infiltrate, spy on, or damage systems.
+            </p>
+            <a href="threats.html" class="btn btn-cyber-outline btn-sm w-100">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Threat 3: Ransomware -->
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-icon-box mb-0">
+                <i class="bi bi-file-earmark-lock2-fill"></i>
+              </div>
+              <span class="badge badge-risk-critical">Critical</span>
+            </div>
+            <h5 class="text-white mb-2">Ransomware</h5>
+            <p class="text-secondary small mb-3">
+              Extortion attacks where hackers encrypt your confidential files and demand cryptocurrency ransom to decrypt them.
+            </p>
+            <a href="threats.html" class="btn btn-cyber-outline btn-sm w-100">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Threat 4: Password Attacks -->
+        <div class="col-md-6 col-lg-3">
+          <div class="cyber-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-icon-box mb-0">
+                <i class="bi bi-key-fill"></i>
+              </div>
+              <span class="badge badge-risk-high">High</span>
+            </div>
+            <h5 class="text-white mb-2">Password Attacks</h5>
+            <p class="text-secondary small mb-3">
+              Brute force, credential stuffing, and dictionary attacks that breach predictable and reused passwords.
+            </p>
+            <a href="threats.html" class="btn btn-cyber-outline btn-sm w-100">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="threats.html" class="btn btn-cyber-primary">
+          View All 8 Major Threats <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Interactive Security Tools Shortcut -->
+  <section class="py-5" id="tools-shortcut">
+    <div class="container py-4">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="section-subtitle">Hands-On Practice</span>
+          <h2 class="section-title mb-3">Interactive Cybersecurity Tools</h2>
+          <p class="text-secondary mb-4">
+            Test your digital safety with our client-side tools. Analyze password resilience, test suspicious URLs against phishing heuristics, and evaluate your cyber hygiene checklist.
+          </p>
+          <ul class="list-unstyled text-secondary mb-4">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-cyan me-2"></i> <strong>Real-time Password Entropy</strong> — Instant crack-time estimates.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-cyan me-2"></i> <strong>Phishing Heuristic Simulator</strong> — Detects typosquatting & urgency keywords.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-cyan me-2"></i> <strong>Cyber Hygiene Checklist</strong> — Tracks your daily security posture.</li>
+          </ul>
+          <a href="tools.html" class="btn btn-cyber-primary">
+            Launch Security Tools <i class="bi bi-tools ms-1"></i>
+          </a>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- Quick Interactive Password Strength Preview -->
+          <div class="tool-box-container">
+            <h5 class="text-white mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-shield-lock text-cyan"></i> Quick Password Strength Test
+            </h5>
+            <p class="text-secondary small mb-3">Type a sample password to test our client-side evaluator:</p>
+            
+            <div class="input-group mb-2">
+              <input type="password" id="pwdInput" class="form-control cyber-input" placeholder="e.g. MySecure#Pass2026!">
+              <button class="btn btn-cyber-outline" type="button" id="togglePwdVisibility">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center small text-secondary">
+              <span>Strength: <span id="pwdStrengthLabel" class="fw-bold text-muted">Enter a password</span></span>
+              <span>Crack Time: <span id="pwdCrackTime" class="font-mono text-cyan">Instant</span></span>
+            </div>
+
+            <div class="strength-meter-wrapper">
+              <div id="pwdStrengthBar" class="strength-meter-bar"></div>
+            </div>
+
+            <div class="row g-2 mt-2">
+              <div class="col-6 rule-check-item" id="rule-len"><i class="bi bi-circle"></i> 8+ characters</div>
+              <div class="col-6 rule-check-item" id="rule-upper"><i class="bi bi-circle"></i> Uppercase (A-Z)</div>
+              <div class="col-6 rule-check-item" id="rule-lower"><i class="bi bi-circle"></i> Lowercase (a-z)</div>
+              <div class="col-6 rule-check-item" id="rule-number"><i class="bi bi-circle"></i> Numbers (0-9)</div>
+              <div class="col-12 rule-check-item" id="rule-special"><i class="bi bi-circle"></i> Special symbol (@, #, $)</div>
+            </div>
+
+            <div class="mt-3 pt-3 border-top border-secondary border-opacity-25 text-end">
+              <a href="tools.html" class="small text-cyan text-decoration-none">Open Full Security Toolkit <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Emergency / Security Help Section Banner -->
+  <section class="py-5" id="emergency">
+    <div class="container">
+      <div class="emergency-banner">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <span class="badge bg-danger text-white mb-2"><i class="bi bi-exclamation-triangle-fill me-1"></i> Security Alert</span>
+            <h3 class="text-white fw-bold mb-2">Think You’ve Been Hacked?</h3>
+            <p class="text-light mb-3">
+              If you suspect unauthorized access to your email, social accounts, or banking credentials, follow these immediate response protocols:
+            </p>
+            <div class="row g-2 text-white small">
+              <div class="col-sm-6"><i class="bi bi-check2-square text-danger me-1"></i> <strong>Change Your Password:</strong> Reset immediately from a trusted device.</div>
+              <div class="col-sm-6"><i class="bi bi-check2-square text-danger me-1"></i> <strong>Enable MFA:</strong> Block unauthorized logins via two-step verification.</div>
+              <div class="col-sm-6"><i class="bi bi-check2-square text-danger me-1"></i> <strong>Secure Your Account:</strong> Review active login sessions & terminate unknown ones.</div>
+              <div class="col-sm-6"><i class="bi bi-check2-square text-danger me-1"></i> <strong>Report Activity:</strong> File an incident with official cyber helplines (1930 / portal).</div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a href="resources.html#helpline" class="btn btn-danger btn-lg shadow">
+              <i class="bi bi-telephone-fill me-1"></i> Emergency Action Guide
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cybersecurity Awareness Quiz Banner -->
+  <section class="py-5 text-center bg-secondary bg-opacity-5">
+    <div class="container py-3">
+      <span class="section-subtitle">Interactive Evaluation</span>
+      <h2 class="section-title mb-3">Test Your Cybersecurity Knowledge</h2>
+      <p class="text-secondary max-w-600 mx-auto mb-4" style="max-width: 600px;">
+        Challenge yourself with real-world scam scenarios, credential handling, and threat identification questions. Get an instant score and personalized recommendations.
+      </p>
+      <a href="quiz.html" class="btn btn-cyber-primary btn-lg">
+        <i class="bi bi-mortarboard-fill me-1"></i> Start Cyber Quiz Now
+      </a>
+    </div>
+  </section>
+
+  <!-- 15. Footer -->
+  <footer class="footer-cyber">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Brand Info -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <span class="fs-4 fw-bold text-white">Cyber <span class="text-cyan">Suraksha</span></span>
+          </div>
+          <p class="text-secondary small mb-3">
+            “Building a safer and more cyber-aware digital world.”
+          </p>
+          <p class="text-muted small">
+            Designed as an academic project demonstrating cybersecurity awareness, threat mitigation, and digital protection for students and internet users.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3">Navigation</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="threats.html" class="footer-link">Cyber Threats</a></li>
+            <li><a href="tools.html" class="footer-link">Security Tools</a></li>
+            <li><a href="mfa.html" class="footer-link">MFA Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources Links -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3">Education & Help</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="awareness.html" class="footer-link">Safety Tips</a></li>
+            <li><a href="quiz.html" class="footer-link">Cyber Awareness Quiz</a></li>
+            <li><a href="dashboard.html" class="footer-link">User Dashboard</a></li>
+            <li><a href="resources.html" class="footer-link">Cyber Resources</a></li>
+            <li><a href="contact.html" class="footer-link">Emergency Contacts</a></li>
+          </ul>
+        </div>
+
+        <!-- Academic Information Card -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-white fw-bold mb-3">Academic Project</h6>
+          <div class="p-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25 small text-secondary">
+            <p class="mb-1 text-cyan fw-bold"><i class="bi bi-laptop me-1"></i> College Project 2026</p>
+            <p class="mb-1">Subject: Cybersecurity & Digital Safety</p>
+            <p class="mb-0 text-muted">Technologies: HTML5, CSS3, JS, Bootstrap 5</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="mb-0">&copy; 2026 Cyber Suraksha. All Rights Reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="resources.html" class="text-muted text-decoration-none small">Privacy Policy</a>
+          <span class="text-muted">&bull;</span>
+          <a href="resources.html" class="text-muted text-decoration-none small">Terms & Conditions</a>
+          <span class="text-muted">&bull;</span>
+          <a href="contact.html" class="text-muted text-decoration-none small">Help Center</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Cyber JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
