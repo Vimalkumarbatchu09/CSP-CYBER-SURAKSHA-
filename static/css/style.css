@@ -1,0 +1,891 @@
+/* ==========================================================================
+   CYBER SURAKSHA — SaaS Cybersecurity & Awareness Platform Stylesheet
+   Design Language: Modern B2B / SaaS Cyber Security Interface
+   Color Palette: Refined Light Background + Deep Forest / Obsidian Navy + Emerald Accents
+   Typography: Plus Jakarta Sans (Headings & UI) & Inter (Body & Microcopy)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* --- Root Variables & SaaS Theme Palette --- */
+:root {
+  /* Surface & Canvas (Clean Refined Light) */
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-canvas: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  
+  /* Brand Primary (Deep Forest & Obsidian Navy from Dribbble Reference) */
+  --brand-navy: #061e18;
+  --brand-forest: #082d24;
+  --brand-primary: #044336;
+  --brand-primary-hover: #07352b;
+  --brand-accent: #059669;
+  --brand-mint: #10b981;
+  --brand-soft-mint: #ecfdf5;
+  --brand-sage: #d1fae5;
+  
+  /* Borders & Dividers */
+  --border-color: #e2e8f0;
+  --border-light: #edf2f7;
+  --border-hover: #cbd5e1;
+  --border-focus: #059669;
+  --border-glow: rgba(5, 150, 105, 0.3);
+  
+  /* Text & Typography */
+  --text-heading: #081e18;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  
+  /* Status Colors (Semantic) */
+  --status-safe: #059669;
+  --status-safe-bg: #ecfdf5;
+  --status-safe-border: #a7f3d0;
+  --status-warning: #d97706;
+  --status-warning-bg: #fffbeb;
+  --status-warning-border: #fde68a;
+  --status-danger: #dc2626;
+  --status-danger-bg: #fef2f2;
+  --status-danger-border: #fecaca;
+  --status-info: #0284c7;
+  --status-info-bg: #f0f9ff;
+  --status-info-border: #bae6fd;
+  
+  /* Legacy Color Compatibility */
+  --cyan-primary: #059669;
+  --cyan-glow: rgba(5, 150, 105, 0.2);
+  --blue-primary: #0284c7;
+  --blue-accent: #044336;
+  
+  /* Fonts */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Shadows (Refined Multi-layer SaaS Shadows) */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.04), 0 4px 6px -4px rgba(15, 23, 42, 0.02);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.02);
+  --glass-shadow: var(--shadow-md);
+
+  /* Transitions */
+  --transition-smooth: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- Base Resets & Global Styles --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle SaaS Background Accent Grid (clean & minimal) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6, .brand-font {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-heading);
+  letter-spacing: -0.025em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand-forest) 0%, var(--brand-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-cyan {
+  color: var(--brand-accent) !important;
+}
+
+.text-blue-light {
+  color: var(--brand-forest) !important;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* --- Modern SaaS Floating Navigation Bar --- */
+.navbar-cyber {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 0;
+  transition: var(--transition-smooth);
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+}
+
+.navbar-cyber.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+  padding: 0.6rem 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--brand-navy) !important;
+  text-decoration: none;
+}
+
+.brand-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--brand-soft-mint);
+  border: 1.5px solid var(--status-safe-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-primary);
+  font-size: 1.15rem;
+  transition: var(--transition-smooth);
+}
+
+.navbar-brand:hover .brand-icon-wrapper {
+  background: var(--brand-forest);
+  color: #ffffff;
+  border-color: var(--brand-forest);
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary) !important;
+  padding: 0.5rem 0.85rem !important;
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--brand-navy) !important;
+  background-color: var(--bg-subtle);
+}
+
+.nav-link.active {
+  color: var(--brand-primary) !important;
+  font-weight: 600;
+  background-color: var(--brand-soft-mint);
+}
+
+.navbar-toggler {
+  border: 1px solid var(--border-color);
+  color: var(--brand-navy);
+  padding: 0.4rem 0.65rem;
+  border-radius: 8px;
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+}
+.navbar-toggler-icon {
+  filter: none;
+}
+
+/* User Account Dropdown Pill */
+.navbar .btn-outline-info {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition-smooth);
+}
+.navbar .btn-outline-info:hover {
+  background-color: var(--bg-subtle);
+  border-color: var(--border-hover) !important;
+  color: var(--brand-navy) !important;
+}
+
+.navbar .dropdown-menu {
+  background-color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 0.5rem;
+}
+.navbar .dropdown-item {
+  color: var(--text-primary) !important;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+}
+.navbar .dropdown-item:hover {
+  background-color: var(--bg-subtle);
+  color: var(--brand-navy) !important;
+}
+.navbar .dropdown-item.text-danger:hover {
+  background-color: var(--status-danger-bg);
+  color: var(--status-danger) !important;
+}
+.navbar .dropdown-header {
+  color: var(--text-muted) !important;
+}
+
+/* --- Buttons (Premium SaaS Styling) --- */
+.btn-cyber-primary {
+  background: var(--brand-forest);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  border: 1px solid var(--brand-navy);
+  border-radius: 9px;
+  padding: 0.65rem 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.08);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-cyber-primary:hover {
+  background: var(--brand-primary);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(4, 67, 54, 0.25);
+}
+
+.btn-cyber-primary:active {
+  transform: translateY(0);
+}
+
+.btn-cyber-outline {
+  background: #ffffff;
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  border: 1px solid var(--border-color);
+  border-radius: 9px;
+  padding: 0.65rem 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-xs);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-cyber-outline:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-hover);
+  color: var(--brand-navy) !important;
+  transform: translateY(-1px);
+}
+
+/* --- SaaS Cards (Clean, Elevated, Minimal) --- */
+.cyber-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.75rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+}
+
+.cyber-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card Icon Container */
+.card-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: var(--brand-soft-mint);
+  border: 1px solid var(--status-safe-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  color: var(--brand-primary);
+  margin-bottom: 1.25rem;
+  transition: var(--transition-smooth);
+}
+
+.cyber-card:hover .card-icon-box {
+  background: var(--brand-forest);
+  color: #ffffff;
+  border-color: var(--brand-forest);
+}
+
+/* --- Badges & Indicators (Refined SaaS Pills) --- */
+.badge-cyber {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.badge-risk-critical {
+  background: var(--status-danger-bg);
+  color: var(--status-danger);
+  border: 1px solid var(--status-danger-border);
+}
+
+.badge-risk-high {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #ffedd5;
+}
+
+.badge-risk-medium {
+  background: var(--status-warning-bg);
+  color: var(--status-warning);
+  border: 1px solid var(--status-warning-border);
+}
+
+.badge-risk-low, .badge-safe {
+  background: var(--status-safe-bg);
+  color: var(--status-safe);
+  border: 1px solid var(--status-safe-border);
+}
+
+.status-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-green {
+  background-color: var(--status-safe);
+}
+.dot-yellow {
+  background-color: var(--status-warning);
+}
+.dot-red {
+  background-color: var(--status-danger);
+}
+
+.pulse-dot {
+  box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.4);
+  animation: pulseSaaS 2s infinite;
+}
+@keyframes pulseSaaS {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(5, 150, 105, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+}
+
+/* --- Hero Section (Clean SaaS Banner) --- */
+.hero-section {
+  padding: 6.5rem 0 4.5rem 0;
+  position: relative;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--brand-forest);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.95rem;
+  border-radius: 30px;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-xs);
+}
+
+.hero-shield-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cyber-radar-circle {
+  position: absolute;
+  border: 1px dashed #cbd5e1;
+  border-radius: 50%;
+  animation: radarRotate 30s linear infinite;
+}
+.circle-1 { width: 320px; height: 320px; }
+.circle-2 { width: 420px; height: 420px; border-style: dotted; animation-duration: 45s; animation-direction: reverse; }
+
+@keyframes radarRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-shield-art {
+  width: 170px;
+  height: 170px;
+  background: linear-gradient(135deg, var(--brand-soft-mint) 0%, #ffffff 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  color: var(--brand-primary);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--status-safe-border);
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Status Card on Hero */
+.hero-status-widget {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+}
+
+/* --- Section Headers --- */
+.section-header {
+  margin-bottom: 3rem;
+}
+.section-subtitle {
+  color: var(--brand-accent);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  line-height: 1.25;
+}
+.section-description {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 680px;
+  margin: 0.75rem auto 0 auto;
+}
+
+/* --- Forms & Inputs (Crisp, High-Usability) --- */
+.cyber-input, .form-control {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: var(--text-primary) !important;
+  border-radius: 9px;
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  transition: var(--transition-smooth);
+}
+.cyber-input:focus, .form-control:focus {
+  background-color: #ffffff !important;
+  border-color: var(--border-focus) !important;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15) !important;
+  color: var(--text-primary) !important;
+  outline: none;
+}
+.cyber-input::placeholder, .form-control::placeholder {
+  color: var(--text-subtle) !important;
+}
+
+.form-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+/* Custom Checkbox */
+.cyber-checkbox .form-check-input {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 4px;
+}
+.cyber-checkbox .form-check-input:checked {
+  background-color: var(--brand-accent);
+  border-color: var(--brand-accent);
+}
+.cyber-checkbox .form-check-label {
+  cursor: pointer;
+  padding-left: 0.35rem;
+  user-select: none;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* --- Interactive Tool Cards & Modals --- */
+.tool-box-container {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Strength Meter Bars */
+.strength-meter-wrapper {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.75rem 0;
+}
+.strength-meter-bar {
+  height: 100%;
+  width: 0%;
+  transition: width 0.35s ease, background-color 0.35s ease;
+}
+
+.rule-check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+}
+.rule-check-item.valid {
+  color: var(--status-safe);
+  font-weight: 500;
+}
+.rule-check-item.invalid {
+  color: var(--text-subtle);
+}
+
+/* Modals (Clean White SaaS Modal) */
+.modal-content.cyber-modal, .modal-content {
+  background: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px;
+  box-shadow: var(--shadow-xl) !important;
+  color: var(--text-primary) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 1.25rem 1.75rem;
+  background: #f8fafc;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+.modal-footer {
+  border-top: 1px solid var(--border-color) !important;
+  padding: 1.25rem 1.75rem;
+  background: #f8fafc;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+.btn-close-white {
+  filter: none;
+}
+
+/* --- Emergency Alert Banner (Refined Amber / Crimson) --- */
+.emergency-banner {
+  background: #fff5f5;
+  border: 1px solid var(--status-danger-border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.emergency-banner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--status-danger);
+}
+
+/* --- Academic Project Badge --- */
+.academic-badge {
+  background: var(--brand-soft-mint);
+  border: 1px solid var(--status-safe-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  font-size: 0.88rem;
+  color: var(--brand-forest);
+}
+
+/* --- Footer (Clean, High-End SaaS) --- */
+.footer-cyber {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  padding: 4.5rem 0 2rem 0;
+  position: relative;
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: var(--transition-smooth);
+  display: inline-block;
+  margin-bottom: 0.65rem;
+}
+.footer-link:hover {
+  color: var(--brand-navy);
+  transform: translateX(3px);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* --- Progress Bars --- */
+.progress-cyber {
+  background-color: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 10px;
+}
+.progress-cyber .progress-bar {
+  background: linear-gradient(90deg, var(--brand-forest), var(--brand-accent));
+}
+
+/* --- Circular Gauge (Dashboard) --- */
+.circular-progress-wrap {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  margin: 0 auto;
+}
+.circular-progress-svg {
+  transform: rotate(-90deg);
+}
+.circle-bg {
+  fill: none;
+  stroke: #e2e8f0;
+  stroke-width: 10;
+}
+.circle-progress {
+  fill: none;
+  stroke: var(--brand-accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease;
+}
+.circle-inner-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding: 5rem 0 3.5rem 0;
+    text-align: center;
+  }
+  .hero-shield-container {
+    margin-top: 2.5rem;
+  }
+  .circle-1 { width: 260px; height: 260px; }
+  .circle-2 { width: 320px; height: 320px; }
+  .hero-shield-art { width: 140px; height: 140px; font-size: 3.5rem; }
+  .section-title { font-size: 1.95rem; }
+}
+
+@media (max-width: 575.98px) {
+  .section-title { font-size: 1.6rem; }
+  .btn-cyber-primary, .btn-cyber-outline { width: 100%; justify-content: center; }
+  .hero-cta-group { flex-direction: column; width: 100%; }
+}
+
+/* ==========================================================================
+   GLOBAL THEME CONTRAST & SAAS OVERRIDES
+   ========================================================================== */
+
+/* Remove dark background classes and harmonize with light SaaS */
+.bg-cyber-dark {
+  background-color: var(--bg-primary) !important;
+}
+
+.bg-secondary.bg-opacity-5,
+section.bg-secondary.bg-opacity-5,
+.bg-secondary.bg-opacity-10,
+section.bg-secondary.bg-opacity-10 {
+  background-color: #f1f5f9 !important;
+}
+
+.bg-card {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Force high-contrast text */
+.text-white {
+  color: var(--text-heading) !important;
+}
+.text-light {
+  color: var(--text-secondary) !important;
+}
+
+/* High-Contrast Cyber Hygiene Section (Do's & Don'ts in awareness.html) */
+.cyber-hygiene-section {
+  background: #ffffff !important;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dos-card {
+  background: var(--status-safe-bg) !important;
+  border: 1.5px solid var(--status-safe-border) !important;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+.dos-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.donts-card {
+  background: var(--status-danger-bg) !important;
+  border: 1.5px solid var(--status-danger-border) !important;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+.donts-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.dos-card .check-item {
+  color: #065f46 !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.dos-card .check-item strong {
+  color: #022c22 !important;
+}
+
+.donts-card .check-item {
+  color: #991b1b !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.donts-card .check-item strong {
+  color: #450a0a !important;
+}
+
+/* Metric / Stat Card (SaaS Dashboard & Overview) */
+.stat-widget {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition-smooth);
+}
+.stat-widget:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--border-hover);
+}
+.stat-widget .stat-number {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+  line-height: 1.1;
+  font-family: var(--font-heading);
+}
+.stat-widget .stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 0.35rem;
+}

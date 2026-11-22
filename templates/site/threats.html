@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Threats | Cyber Suraksha</title>
+  <meta name="description" content="Explore the top 8 cyber threats: Phishing, Malware, Ransomware, Password Attacks, Identity Theft, Social Engineering, Online Scams, and Data Breaches.">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Accessibility & Multi-Language Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/accessibility.css') }}">
+  <!-- Custom Cyber Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-cyber fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('home') }}">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <span>Cyber <span class="text-cyan">Suraksha</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cyberNavbar" aria-controls="cyberNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="cyberNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{{ url_for('threats') }}" data-i18n="nav_threats">Cyber Threats</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('tools') }}" data-i18n="nav_tools">Security Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('mfa') }}" data-i18n="nav_mfa">MFA</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('awareness') }}" data-i18n="nav_awareness">Awareness</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('quiz') }}" data-i18n="nav_quiz">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}" data-i18n="nav_dashboard">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('resources') }}" data-i18n="nav_resources">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}" data-i18n="nav_contact">Contact</a></li>
+          <li class="nav-item dropdown ms-lg-2 mt-2 mt-lg-0">
+            <a class="btn btn-outline-info btn-sm px-3 py-2 dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i>
+              <span>{{ current_user.full_name.split()[0] if current_user.is_authenticated else 'Account' }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li><h6 class="dropdown-header small">{{ current_user.email if current_user.is_authenticated else '' }}</h6></li>
+              <li><a class="dropdown-item small" href="{{ url_for('dashboard') }}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger small" href="{{ url_for('auth.logout') }}"><i class="bi bi-box-arrow-right me-2"></i> Secure Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Flash Notification Banner -->
+  <div class="container" style="margin-top: 5.5rem; margin-bottom: -4.5rem; position: relative; z-index: 1040;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show small d-flex align-items-center gap-2 shadow" role="alert">
+            <i class="bi {{ 'bi-check-circle-fill' if category == 'success' else 'bi-info-circle-fill' }}"></i>
+            <div>{{ message }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+
+  <!-- Header -->
+  <section class="hero-section pb-4" style="padding-top: 7rem;" data-tts-section>
+    <div class="container text-center">
+      <span class="hero-tag" data-i18n="threats_subtitle">
+        <i class="bi bi-shield-exclamation"></i> THREAT INTELLIGENCE & PREVENTION
+      </span>
+      <h1 class="display-4 fw-bold text-white mb-3" data-i18n="threats_title">Know the Threats Before They Strike</h1>
+      <p class="lead text-secondary mx-auto" style="max-width: 760px;" data-i18n="threats_desc">
+        Understanding modern attack vectors is the first line of defense. Explore the 8 most prevalent cybersecurity threats targeting individuals and organizations, complete with warning signs and prevention steps.
+      </p>
+      <div class="mt-3">
+        <a href="#visual-stories" class="btn btn-cyber-primary">
+          <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Attack Videos</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 Threats Cards Grid -->
+  <section class="py-5" data-tts-section>
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- 1. Phishing -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between h-100">
+            <div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-box mb-0">
+                  <i class="bi bi-envelope-exclamation-fill"></i>
+                </div>
+                <span class="badge badge-risk-critical" data-i18n="severity_critical">Critical</span>
+              </div>
+              <h4 class="text-heading fw-bold mb-2" data-i18n="threat_phishing">Phishing</h4>
+              <p class="text-secondary small mb-3" data-i18n="threat_phishing_desc">
+                Fraudulent emails, fake websites, or SMS messages designed to trick you into revealing sensitive credentials, passwords, or credit card numbers.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-auto">
+              <button class="btn btn-cyber-primary btn-sm w-100" onclick="playStory('phishing', 'video')">
+                <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Video</span>
+              </button>
+              <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalPhishing">
+                <i class="bi bi-info-circle me-1"></i> <span data-i18n="learn_more">Learn More</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Malware -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between h-100">
+            <div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-box mb-0">
+                  <i class="bi bi-bug-fill"></i>
+                </div>
+                <span class="badge badge-risk-high" data-i18n="severity_high">High</span>
+              </div>
+              <h4 class="text-heading fw-bold mb-2" data-i18n="threat_malware">Malware</h4>
+              <p class="text-secondary small mb-3" data-i18n="threat_malware_desc">
+                Malicious software such as trojans, spyware, keyloggers, and viruses that infiltrate your device to steal data, monitor keystrokes, or corrupt files.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-auto">
+              <button class="btn btn-cyber-primary btn-sm w-100" onclick="playStory('malware', 'video')">
+                <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Video</span>
+              </button>
+              <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalMalware">
+                <i class="bi bi-info-circle me-1"></i> <span data-i18n="learn_more">Learn More</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Ransomware -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between h-100">
+            <div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-box mb-0">
+                  <i class="bi bi-file-earmark-lock2-fill"></i>
+                </div>
+                <span class="badge badge-risk-critical" data-i18n="severity_critical">Critical</span>
+              </div>
+              <h4 class="text-heading fw-bold mb-2" data-i18n="threat_ransomware">Ransomware</h4>
+              <p class="text-secondary small mb-3" data-i18n="threat_ransomware_desc">
+                A catastrophic form of malware that rapidly encrypts your personal photos, documents, and hard drive, demanding cryptocurrency payment to unlock.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-auto">
+              <button class="btn btn-cyber-primary btn-sm w-100" onclick="playStory('ransomware', 'video')">
+                <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Video</span>
+              </button>
+              <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalRansomware">
+                <i class="bi bi-info-circle me-1"></i> <span data-i18n="learn_more">Learn More</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Password Attacks -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between h-100">
+            <div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-box mb-0">
+                  <i class="bi bi-key-fill"></i>
+                </div>
+                <span class="badge badge-risk-high" data-i18n="severity_high">High</span>
+              </div>
+              <h4 class="text-heading fw-bold mb-2" data-i18n="threat_password">Password Attacks</h4>
+              <p class="text-secondary small mb-3" data-i18n="threat_password_desc">
+                Brute-force scripts, credential stuffing, and dictionary attacks that crack weak, predictable, or reused passwords across different websites.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-auto">
+              <button class="btn btn-cyber-primary btn-sm w-100" onclick="playStory('password', 'video')">
+                <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Video</span>
+              </button>
+              <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalPasswordAttacks">
+                <i class="bi bi-info-circle me-1"></i> <span data-i18n="learn_more">Learn More</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Identity Theft -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between h-100">
+            <div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-box mb-0">
+                  <i class="bi bi-person-badge-fill"></i>
+                </div>
+                <span class="badge badge-risk-critical" data-i18n="severity_critical">Critical</span>
+              </div>
+              <h4 class="text-heading fw-bold mb-2" data-i18n="threat_identity">Identity Theft</h4>
+              <p class="text-secondary small mb-3" data-i18n="threat_identity_desc">
+                Criminals unlawfully acquire personal details (Aadhaar, SSN, PAN, date of birth) to open unauthorized loans, credit cards, or impersonate you.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-auto">
+              <button class="btn btn-cyber-primary btn-sm w-100" onclick="playStory('identity', 'video')">
+                <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Video</span>
+              </button>
+              <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalIdentityTheft">
+                <i class="bi bi-info-circle me-1"></i> <span data-i18n="learn_more">Learn More</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Social Engineering -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between h-100">
+            <div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-box mb-0">
+                  <i class="bi bi-chat-quote-fill"></i>
+                </div>
+                <span class="badge badge-risk-high" data-i18n="severity_high">High</span>
+              </div>
+              <h4 class="text-heading fw-bold mb-2" data-i18n="threat_social">Social Engineering</h4>
+              <p class="text-secondary small mb-3" data-i18n="threat_social_desc">
+                Psychological manipulation tactics that trick people into voluntarily handing over confidential security information or bypassing protocol.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-auto">
+              <button class="btn btn-cyber-primary btn-sm w-100" onclick="playStory('social_engineering', 'video')">
+                <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Video</span>
+              </button>
+              <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalSocialEngineering">
+                <i class="bi bi-info-circle me-1"></i> <span data-i18n="learn_more">Learn More</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Online Scams -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between h-100">
+            <div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-box mb-0">
+                  <i class="bi bi-cash-coin"></i>
+                </div>
+                <span class="badge badge-risk-medium" data-i18n="severity_medium">Medium</span>
+              </div>
+              <h4 class="text-heading fw-bold mb-2" data-i18n="threat_scams">Online Scams</h4>
+              <p class="text-secondary small mb-3" data-i18n="threat_scams_desc">
+                Lottery fraud, fake job offers, romance scams, and bogus QR code payment requests that deceive victims into sending money directly.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-auto">
+              <button class="btn btn-cyber-primary btn-sm w-100" onclick="playStory('upi_scam', 'video')">
+                <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Video</span>
+              </button>
+              <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalOnlineScams">
+                <i class="bi bi-info-circle me-1"></i> <span data-i18n="learn_more">Learn More</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Data Breaches -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card d-flex flex-column justify-content-between h-100">
+            <div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-box mb-0">
+                  <i class="bi bi-database-fill-slash"></i>
+                </div>
+                <span class="badge badge-risk-high" data-i18n="severity_high">High</span>
+              </div>
+              <h4 class="text-heading fw-bold mb-2" data-i18n="threat_breach">Data Breaches</h4>
+              <p class="text-secondary small mb-3" data-i18n="threat_breach_desc">
+                Security incidents where corporate databases are compromised by cyber adversaries, leaking millions of user emails, passwords, and records onto the dark web.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-2 mt-auto">
+              <button class="btn btn-cyber-primary btn-sm w-100" onclick="playStory('data_breach', 'video')">
+                <i class="bi bi-play-circle-fill me-1"></i> <span data-i18n="watch_video_animated">Watch Animated Video</span>
+              </button>
+              <button class="btn btn-cyber-outline btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modalDataBreaches">
+                <i class="bi bi-info-circle me-1"></i> <span data-i18n="learn_more">Learn More</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Learning: Animated Cyber Threat Stories -->
+  <section class="py-5 bg-secondary bg-opacity-5 visual-stories-section" id="visual-stories" data-tts-section>
+    <div class="container py-4">
+      <div class="section-header text-center">
+        <span class="section-subtitle" data-i18n="visual_stories_subtitle">Visual Learning</span>
+        <h2 class="section-title" data-i18n="visual_stories_title">See How Cyber Attacks Work</h2>
+        <p class="section-description" data-i18n="visual_stories_desc">
+          Watch step-by-step animated stories to understand how each cyber attack happens — no technical knowledge needed.
+        </p>
+      </div>
+
+      <div id="visualStoriesContainer">
+        <!-- All 8 visual story cards injected by visual-stories.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALS FOR THE 8 THREATS -->
+
+  <!-- Modal 1: Phishing -->
+  <div class="modal fade" id="modalPhishing" tabindex="-1" aria-labelledby="modalPhishingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="modalPhishingLabel">
+            <i class="bi bi-envelope-exclamation-fill text-danger me-2"></i> Threat Profile: Phishing Attacks
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge badge-risk-critical mb-3">Severity: Critical</span>
+          <h6 class="text-cyan fw-bold">How It Works:</h6>
+          <p class="text-secondary">
+            Phishing attacks use deceptive emails, spoofed sender addresses, and lookalike domain names (e.g. <code>secure-paypa1.com</code>) to impersonate banks, e-commerce giants, or IT departments. They inject an artificial sense of urgency (e.g., "Account suspended within 2 hours!") to compel victims to click links and type credentials.
+          </p>
+          <h6 class="text-cyan fw-bold">Warning Signs:</h6>
+          <ul class="text-secondary small">
+            <li>Generic greetings ("Dear Customer" instead of your name).</li>
+            <li>Grammatical errors, odd phrasing, or mismatched domain extensions (.xyz, .top).</li>
+            <li>Demands for OTPs, PINs, or password resets that you did not initiate.</li>
+          </ul>
+          <h6 class="text-cyan fw-bold">Defense Strategy:</h6>
+          <p class="text-secondary small mb-0">
+            Never click links in unexpected emails. Always open a fresh tab and navigate directly to the verified official portal. Use email providers with SPF/DKIM filters and enable MFA.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" onclick="playStory('phishing', 'video')"><i class="bi bi-youtube me-1"></i> Watch Video</button>
+          <a href="{{ url_for('tools') }}" class="btn btn-cyber-primary btn-sm"><i class="bi bi-search me-1"></i> Test in Phishing Simulator</a>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Malware -->
+  <div class="modal fade" id="modalMalware" tabindex="-1" aria-labelledby="modalMalwareLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="modalMalwareLabel">
+            <i class="bi bi-bug-fill text-warning me-2"></i> Threat Profile: Malware & Spyware
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge badge-risk-high mb-3">Severity: High</span>
+          <h6 class="text-cyan fw-bold">How It Works:</h6>
+          <p class="text-secondary">
+            Malware (Malicious Software) is an umbrella term encompassing Trojans, Keyloggers, Adware, and Worms. It is typically distributed through pirated software torrents, infected email attachments (.exe, .scr, macro-enabled .doc), or drive-by downloads on compromised web pages.
+          </p>
+          <h6 class="text-cyan fw-bold">Warning Signs:</h6>
+          <ul class="text-secondary small">
+            <li>Sudden sluggish performance and unusually high CPU or RAM consumption.</li>
+            <li>Spontaneous pop-ups, modified browser default search engine, or new unwanted toolbars.</li>
+            <li>Antivirus disabled without your consent.</li>
+          </ul>
+          <h6 class="text-cyan fw-bold">Defense Strategy:</h6>
+          <p class="text-secondary small mb-0">
+            Never download cracked software or run unknown executables. Keep your operating system patched, and run a reputable antivirus solution with real-time heuristic scanning.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" onclick="playStory('malware', 'video')"><i class="bi bi-youtube me-1"></i> Watch Video</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Ransomware -->
+  <div class="modal fade" id="modalRansomware" tabindex="-1" aria-labelledby="modalRansomwareLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="modalRansomwareLabel">
+            <i class="bi bi-file-earmark-lock2-fill text-danger me-2"></i> Threat Profile: Ransomware Extortion
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge badge-risk-critical mb-3">Severity: Critical</span>
+          <h6 class="text-cyan fw-bold">How It Works:</h6>
+          <p class="text-secondary">
+            Ransomware silently searches your storage drives for documents, databases, and photos, then encrypts them with military-grade algorithms (like AES-256 or RSA-4096). A ransom note replaces your desktop wallpaper demanding Bitcoin to provide the decryption key.
+          </p>
+          <h6 class="text-cyan fw-bold">Key Risk:</h6>
+          <p class="text-secondary small">
+            Paying the ransom does NOT guarantee recovery and funds organized cybercrime.
+          </p>
+          <h6 class="text-cyan fw-bold">Defense Strategy:</h6>
+          <p class="text-secondary small mb-0">
+            Follow the <strong>3-2-1 Backup Rule</strong>: Maintain 3 copies of important data on 2 different media types, with 1 copy stored offline or off-site (isolated from network contagion).
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" onclick="playStory('ransomware', 'video')"><i class="bi bi-youtube me-1"></i> Watch Video</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Password Attacks -->
+  <div class="modal fade" id="modalPasswordAttacks" tabindex="-1" aria-labelledby="modalPasswordAttacksLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="modalPasswordAttacksLabel">
+            <i class="bi bi-key-fill text-warning me-2"></i> Threat Profile: Password & Credential Attacks
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge badge-risk-high mb-3">Severity: High</span>
+          <h6 class="text-cyan fw-bold">How It Works:</h6>
+          <p class="text-secondary">
+            Attackers utilize automated tools like Hashcat to test billions of dictionary combinations per second. In <em>Credential Stuffing</em>, attackers feed lists of leaked email/password pairs from third-party breaches into popular websites to see where victims reused credentials.
+          </p>
+          <h6 class="text-cyan fw-bold">Defense Strategy:</h6>
+          <ul class="text-secondary small mb-0">
+            <li>Generate unique passwords with 14+ random characters.</li>
+            <li>Use a reputable Password Manager (e.g. Bitwarden, 1Password).</li>
+            <li>Always enforce Multi-Factor Authentication (MFA).</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" onclick="playStory('password', 'video')"><i class="bi bi-youtube me-1"></i> Watch Video</button>
+          <a href="{{ url_for('tools') }}" class="btn btn-cyber-primary btn-sm"><i class="bi bi-shield-check me-1"></i> Test Password Strength</a>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Identity Theft -->
+  <div class="modal fade" id="modalIdentityTheft" tabindex="-1" aria-labelledby="modalIdentityTheftLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="modalIdentityTheftLabel">
+            <i class="bi bi-person-badge-fill text-danger me-2"></i> Threat Profile: Identity Theft
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge badge-risk-critical mb-3">Severity: Critical</span>
+          <p class="text-secondary">
+            Identity theft occurs when malicious actors harvest personally identifiable information (PII) to impersonate you. This can ruin credit scores, generate fraudulent tax claims, or result in criminal investigations under your name.
+          </p>
+          <h6 class="text-cyan fw-bold">Prevention:</h6>
+          <ul class="text-secondary small mb-0">
+            <li>Never publicly post ID card photos, boarding passes, or birth certificates on social media.</li>
+            <li>Shred physical bank statements and official documents before discarding.</li>
+            <li>Monitor credit reports and active SIM cards registered under your national identity.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" onclick="playStory('identity', 'video')"><i class="bi bi-youtube me-1"></i> Watch Video</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Social Engineering -->
+  <div class="modal fade" id="modalSocialEngineering" tabindex="-1" aria-labelledby="modalSocialEngineeringLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="modalSocialEngineeringLabel">
+            <i class="bi bi-chat-quote-fill text-warning me-2"></i> Threat Profile: Social Engineering
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge badge-risk-high mb-3">Severity: High</span>
+          <p class="text-secondary">
+            Social engineering bypasses firewalls by hacking the human mind. Attackers leverage authority ("This is the Police / CEO"), urgency ("Transfer money immediately"), or fear ("Your account will be terminated") to extract compliance.
+          </p>
+          <h6 class="text-cyan fw-bold">Golden Rule:</h6>
+          <p class="text-secondary small mb-0">
+            Pause, take a breath, and verify through an independent communication channel whenever you encounter urgent demands for sensitive data or money transfers.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" onclick="playStory('social_engineering', 'video')"><i class="bi bi-youtube me-1"></i> Watch Video</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 7: Online Scams -->
+  <div class="modal fade" id="modalOnlineScams" tabindex="-1" aria-labelledby="modalOnlineScamsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="modalOnlineScamsLabel">
+            <i class="bi bi-cash-coin text-warning me-2"></i> Threat Profile: Online Financial Scams
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge badge-risk-medium mb-3">Severity: Medium to High</span>
+          <p class="text-secondary">
+            Online scams include fake e-commerce shopping storefronts, high-yield cryptocurrency investment schemes, work-from-home task frauds, and QR-code payment reversals where scanning actually debits your balance.
+          </p>
+          <h6 class="text-cyan fw-bold">Remember:</h6>
+          <p class="text-secondary small mb-0">
+            Scanning a UPI / Payment QR code is <em>only</em> used to <strong>pay money</strong>, never to receive money. If an offer looks too good to be true, it is almost certainly a scam.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" onclick="playStory('upi_scam', 'video')"><i class="bi bi-youtube me-1"></i> Watch Video</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 8: Data Breaches -->
+  <div class="modal fade" id="modalDataBreaches" tabindex="-1" aria-labelledby="modalDataBreachesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content cyber-modal">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="modalDataBreachesLabel">
+            <i class="bi bi-database-fill-slash text-danger me-2"></i> Threat Profile: Enterprise Data Breaches
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="badge badge-risk-high mb-3">Severity: High</span>
+          <p class="text-secondary">
+            Even if your personal computer is secure, companies where you have registered accounts may suffer database breaches. Stolen databases containing hashes, names, and phone numbers are sold on underground cyber forums.
+          </p>
+          <h6 class="text-cyan fw-bold">Response:</h6>
+          <ul class="text-secondary small mb-0">
+            <li>Check if your email has surfaced in breaches using services like HaveIBeenPwned.</li>
+            <li>Immediately reset passwords for any affected service.</li>
+            <li>Never reuse your main email password on third-party forums.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" onclick="playStory('data_breach', 'video')"><i class="bi bi-youtube me-1"></i> Watch Video</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-cyber">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <span class="fs-4 fw-bold text-white">Cyber <span class="text-cyan">Suraksha</span></span>
+          </div>
+          <p class="text-secondary small mb-3" data-i18n="footer_tagline">
+            “Building a safer and more cyber-aware digital world.”
+          </p>
+          <p class="text-muted small">
+            Designed as an academic project demonstrating cybersecurity awareness, threat mitigation, and digital protection.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3" data-i18n="footer_nav">Navigation</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="{{ url_for('home') }}" class="footer-link" data-i18n="nav_home">Home</a></li>
+            <li><a href="{{ url_for('about') }}" class="footer-link" data-i18n="nav_about">About Us</a></li>
+            <li><a href="{{ url_for('threats') }}" class="footer-link" data-i18n="nav_threats">Cyber Threats</a></li>
+            <li><a href="{{ url_for('tools') }}" class="footer-link" data-i18n="nav_tools">Security Tools</a></li>
+            <li><a href="{{ url_for('mfa') }}" class="footer-link" data-i18n="nav_mfa">MFA Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3" data-i18n="footer_edu">Education & Help</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="{{ url_for('awareness') }}" class="footer-link" data-i18n="nav_awareness">Safety Tips</a></li>
+            <li><a href="{{ url_for('quiz') }}" class="footer-link" data-i18n="nav_quiz">Cyber Awareness Quiz</a></li>
+            <li><a href="{{ url_for('dashboard') }}" class="footer-link" data-i18n="nav_dashboard">User Dashboard</a></li>
+            <li><a href="{{ url_for('resources') }}" class="footer-link" data-i18n="nav_resources">Cyber Resources</a></li>
+            <li><a href="{{ url_for('contact') }}" class="footer-link" data-i18n="nav_contact">Emergency Contacts</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-white fw-bold mb-3" data-i18n="footer_project">Academic Project</h6>
+          <div class="p-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25 small text-secondary">
+            <p class="mb-1 text-cyan fw-bold"><i class="bi bi-laptop me-1"></i> College Project 2026</p>
+            <p class="mb-1">Subject: Cybersecurity & Digital Safety</p>
+            <p class="mb-0 text-muted">Technologies: HTML5, CSS3, JS, Bootstrap 5</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="mb-0">&copy; 2026 Cyber Suraksha. All Rights Reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="{{ url_for('resources') }}" class="text-muted text-decoration-none small">Privacy Policy</a>
+          <span class="text-muted">&bull;</span>
+          <a href="{{ url_for('resources') }}" class="text-muted text-decoration-none small">Terms & Conditions</a>
+          <span class="text-muted">&bull;</span>
+          <a href="{{ url_for('contact') }}" class="text-muted text-decoration-none small">Help Center</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Multi-Language Translations -->
+  <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
+  <!-- Internationalization & Text-to-Speech Engine -->
+  <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
+  <!-- Visual Story Animations -->
+  <script src="{{ url_for('static', filename='js/visual-stories.js') }}"></script>
+  <!-- Custom Cyber JavaScript -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

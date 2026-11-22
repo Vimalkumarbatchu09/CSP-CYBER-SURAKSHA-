@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Safety Awareness | Cyber Suraksha</title>
+  <meta name="description" content="Discover essential cyber safety tips, best practices, and Do's & Don'ts to build resilient digital protection habits.">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Accessibility & Multi-Language Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/accessibility.css') }}">
+  <!-- Custom Cyber Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-cyber fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('home') }}">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <span>Cyber <span class="text-cyan">Suraksha</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cyberNavbar" aria-controls="cyberNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="cyberNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('threats') }}" data-i18n="nav_threats">Cyber Threats</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('tools') }}" data-i18n="nav_tools">Security Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('mfa') }}" data-i18n="nav_mfa">MFA</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{{ url_for('awareness') }}" data-i18n="nav_awareness">Awareness</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('quiz') }}" data-i18n="nav_quiz">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}" data-i18n="nav_dashboard">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('resources') }}" data-i18n="nav_resources">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}" data-i18n="nav_contact">Contact</a></li>
+          <li class="nav-item dropdown ms-lg-2 mt-2 mt-lg-0">
+            <a class="btn btn-outline-info btn-sm px-3 py-2 dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i>
+              <span>{{ current_user.full_name.split()[0] if current_user.is_authenticated else 'Account' }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li><h6 class="dropdown-header small">{{ current_user.email if current_user.is_authenticated else '' }}</h6></li>
+              <li><a class="dropdown-item small" href="{{ url_for('dashboard') }}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger small" href="{{ url_for('auth.logout') }}"><i class="bi bi-box-arrow-right me-2"></i> Secure Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Flash Notification Banner -->
+  <div class="container" style="margin-top: 5.5rem; margin-bottom: -4.5rem; position: relative; z-index: 1040;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show small d-flex align-items-center gap-2 shadow" role="alert">
+            <i class="bi {{ 'bi-check-circle-fill' if category == 'success' else 'bi-info-circle-fill' }}"></i>
+            <div>{{ message }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+
+  <!-- Header -->
+  <section class="hero-section pb-4" style="padding-top: 7rem;" data-tts-section>
+    <div class="container text-center">
+      <span class="hero-tag">
+        <i class="bi bi-lightbulb-fill"></i> CYBER HYGIENE & EDUCATION
+      </span>
+      <h1 class="display-4 fw-bold text-white mb-3" data-i18n="awareness_title">Essential Cyber Safety Tips</h1>
+      <p class="lead text-secondary mx-auto" style="max-width: 760px;">
+        Developing disciplined digital instincts is the most effective safeguard against cyberattacks. Review our core safety tenets below to fortify your everyday online presence.
+      </p>
+    </div>
+  </section>
+
+  <!-- 8 Essential Tips Cards (Required) -->
+  <section class="py-5" data-tts-section>
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Defense in Depth</span>
+        <h2 class="section-title">8 Golden Rules of Cyber Defense</h2>
+      </div>
+
+      <div class="row g-4">
+        <!-- Tip 1 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-cursor-fill"></i>
+            </div>
+            <h5 class="text-white mb-2" data-i18n="tip1_title">Think Before Clicking Links</h5>
+            <p class="text-secondary small mb-0" data-i18n="tip1_desc">
+              Hover over hyperlinks before clicking to preview the real URL. Watch out for misspelled brand names, urgency triggers, and shortened redirect URLs.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tip 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-chat-left-dots-fill"></i>
+            </div>
+            <h5 class="text-white mb-2" data-i18n="tip2_title">Never Share OTPs</h5>
+            <p class="text-secondary small mb-0" data-i18n="tip2_desc">
+              No genuine bank official, support agent, or police representative will ever ask for your One-Time Password. Sharing your OTP gives attackers direct account access.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tip 3 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-key-fill"></i>
+            </div>
+            <h5 class="text-white mb-2" data-i18n="tip3_title">Use Unique Passwords</h5>
+            <p class="text-secondary small mb-0" data-i18n="tip3_desc">
+              Never duplicate passwords across multiple platforms. If one site suffers a breach, password reuse allows attackers to breach all your accounts via credential stuffing.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tip 4 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h5 class="text-white mb-2" data-i18n="tip4_title">Enable MFA</h5>
+            <p class="text-secondary small mb-0" data-i18n="tip4_desc">
+              Turn on Multi-Factor Authentication (MFA) across your email, social networks, and banking portals. It blocks 99.9% of automated credential takeover attempts.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tip 5 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-arrow-repeat"></i>
+            </div>
+            <h5 class="text-white mb-2" data-i18n="tip5_title">Keep Software Updated</h5>
+            <p class="text-secondary small mb-0" data-i18n="tip5_desc">
+              Software updates frequently contain critical security patches that fix vulnerabilities exploited by malware and ransomware. Enable automatic OS and app updates.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tip 6 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-download"></i>
+            </div>
+            <h5 class="text-white mb-2" data-i18n="tip6_title">Avoid Unknown Downloads</h5>
+            <p class="text-secondary small mb-0" data-i18n="tip6_desc">
+              Never download cracked games, pirated software, or email attachments ending in .exe, .scr, or .vbs from unverified sources, as they often contain Trojans.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tip 7 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-globe2"></i>
+            </div>
+            <h5 class="text-white mb-2" data-i18n="tip7_title">Check Website URLs Carefully</h5>
+            <p class="text-secondary small mb-0" data-i18n="tip7_desc">
+              Look for the HTTPS padlock indicator and verify the spelling of the domain. Fake sites often use typos like <code>netfl1x.com</code> or <code>gooogle.co</code>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tip 8 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="cyber-card">
+            <div class="card-icon-box">
+              <i class="bi bi-person-x-fill"></i>
+            </div>
+            <h5 class="text-white mb-2" data-i18n="tip8_title">Do Not Share Sensitive Info Online</h5>
+            <p class="text-secondary small mb-0" data-i18n="tip8_desc">
+              Avoid posting boarding passes, IDs, home addresses, phone numbers, or credit card snapshots on public social media where fraudsters can collect personal data.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Do's and Don'ts Matrix -->
+  <section class="py-5 cyber-hygiene-section" data-tts-section>
+    <div class="container py-3">
+      <div class="section-header text-center mb-4">
+        <span class="section-subtitle">Quick Reference Guide</span>
+        <h2 class="section-title text-white">Cyber Hygiene: Do’s & Don'ts</h2>
+        <p class="section-description text-light opacity-75">A scannable guide comparing risky habits against recommended security actions.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Do's Column -->
+        <div class="col-lg-6">
+          <div class="p-4 rounded dos-card h-100">
+            <h4 class="text-success mb-3 d-flex align-items-center gap-2 fw-bold" data-i18n="dos_title">
+              <i class="bi bi-check-circle-fill fs-4"></i> Recommended (DO)
+            </h4>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-3 d-flex align-items-start gap-3">
+                <i class="bi bi-check2-circle text-success fs-5 mt-1 flex-shrink-0"></i>
+                <div class="check-item" data-i18n="do1"><strong class="text-white">Use a Password Manager:</strong> Store long, randomly generated passwords securely so you never have to remember dozens of complex phrases.</div>
+              </li>
+              <li class="mb-3 d-flex align-items-start gap-3">
+                <i class="bi bi-check2-circle text-success fs-5 mt-1 flex-shrink-0"></i>
+                <div class="check-item" data-i18n="do2"><strong class="text-white">Verify Senders Independently:</strong> Call your bank or contact the vendor using phone numbers from their official website if you receive urgent payment alerts.</div>
+              </li>
+              <li class="mb-3 d-flex align-items-start gap-3">
+                <i class="bi bi-check2-circle text-success fs-5 mt-1 flex-shrink-0"></i>
+                <div class="check-item" data-i18n="do3"><strong class="text-white">Backup to Offline Storage:</strong> Keep an external hard drive disconnected from the internet to preserve clean copies of your files.</div>
+              </li>
+              <li class="d-flex align-items-start gap-3">
+                <i class="bi bi-check2-circle text-success fs-5 mt-1 flex-shrink-0"></i>
+                <div class="check-item" data-i18n="do4"><strong class="text-white">Use a VPN on Public Networks:</strong> Always encrypt your web browsing traffic when connected to airports, coffee shops, or hotels.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Don'ts Column -->
+        <div class="col-lg-6">
+          <div class="p-4 rounded donts-card h-100">
+            <h4 class="text-danger mb-3 d-flex align-items-center gap-2 fw-bold" data-i18n="donts_title">
+              <i class="bi bi-x-circle-fill fs-4"></i> Risky Practices (DON'T)
+            </h4>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-3 d-flex align-items-start gap-3">
+                <i class="bi bi-x-circle text-danger fs-5 mt-1 flex-shrink-0"></i>
+                <div class="check-item" data-i18n="dont1"><strong class="text-white">Don't Scan Random QR Codes:</strong> Scanning a QR code from an unverified caller or flyer can instantly authorize an outgoing digital money transfer.</div>
+              </li>
+              <li class="mb-3 d-flex align-items-start gap-3">
+                <i class="bi bi-x-circle text-danger fs-5 mt-1 flex-shrink-0"></i>
+                <div class="check-item" data-i18n="dont2"><strong class="text-white">Don't Save Passwords in Unprotected Notes:</strong> Writing PINs and master credentials in plain text notes or emails leaves them exposed.</div>
+              </li>
+              <li class="mb-3 d-flex align-items-start gap-3">
+                <i class="bi bi-x-circle text-danger fs-5 mt-1 flex-shrink-0"></i>
+                <div class="check-item" data-i18n="dont3"><strong class="text-white">Don't Install Pirated / Torrents:</strong> Cracked Adobe or Windows installers are the #1 delivery vector for cryptocurrency miners and info-stealers.</div>
+              </li>
+              <li class="d-flex align-items-start gap-3">
+                <i class="bi bi-x-circle text-danger fs-5 mt-1 flex-shrink-0"></i>
+                <div class="check-item" data-i18n="dont4"><strong class="text-white">Don't Ignore Security Alerts:</strong> When your browser displays a red warning certificate alert, immediately exit instead of clicking "Proceed Anyway".</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA to Quiz -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h3 class="text-white fw-bold mb-3">Ready to Put These Tips to the Test?</h3>
+      <p class="text-secondary mx-auto mb-4" style="max-width: 600px;">
+        See how well you recognize scam attempts, credential hazards, and phishing hooks in our interactive quiz.
+      </p>
+      <a href="{{ url_for('quiz') }}" class="btn btn-cyber-primary">
+        <i class="bi bi-mortarboard-fill me-1"></i> Start Cybersecurity Quiz
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-cyber">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <span class="fs-4 fw-bold text-white">Cyber <span class="text-cyan">Suraksha</span></span>
+          </div>
+          <p class="text-secondary small mb-3" data-i18n="footer_tagline">
+            “Building a safer and more cyber-aware digital world.”
+          </p>
+          <p class="text-muted small">
+            Designed as an academic project demonstrating cybersecurity awareness, threat mitigation, and digital protection.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3" data-i18n="footer_nav">Navigation</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="{{ url_for('home') }}" class="footer-link" data-i18n="nav_home">Home</a></li>
+            <li><a href="{{ url_for('about') }}" class="footer-link" data-i18n="nav_about">About Us</a></li>
+            <li><a href="{{ url_for('threats') }}" class="footer-link" data-i18n="nav_threats">Cyber Threats</a></li>
+            <li><a href="{{ url_for('tools') }}" class="footer-link" data-i18n="nav_tools">Security Tools</a></li>
+            <li><a href="{{ url_for('mfa') }}" class="footer-link" data-i18n="nav_mfa">MFA Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="text-white fw-bold mb-3" data-i18n="footer_edu">Education & Help</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="{{ url_for('awareness') }}" class="footer-link" data-i18n="nav_awareness">Safety Tips</a></li>
+            <li><a href="{{ url_for('quiz') }}" class="footer-link" data-i18n="nav_quiz">Cyber Awareness Quiz</a></li>
+            <li><a href="{{ url_for('dashboard') }}" class="footer-link" data-i18n="nav_dashboard">User Dashboard</a></li>
+            <li><a href="{{ url_for('resources') }}" class="footer-link" data-i18n="nav_resources">Cyber Resources</a></li>
+            <li><a href="{{ url_for('contact') }}" class="footer-link" data-i18n="nav_contact">Emergency Contacts</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-white fw-bold mb-3" data-i18n="footer_project">Academic Project</h6>
+          <div class="p-3 rounded bg-secondary bg-opacity-10 border border-secondary border-opacity-25 small text-secondary">
+            <p class="mb-1 text-cyan fw-bold"><i class="bi bi-laptop me-1"></i> College Project 2026</p>
+            <p class="mb-1">Subject: Cybersecurity & Digital Safety</p>
+            <p class="mb-0 text-muted">Technologies: HTML5, CSS3, JS, Bootstrap 5</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="mb-0">&copy; 2026 Cyber Suraksha. All Rights Reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="{{ url_for('resources') }}" class="text-muted text-decoration-none small">Privacy Policy</a>
+          <span class="text-muted">&bull;</span>
+          <a href="{{ url_for('resources') }}" class="text-muted text-decoration-none small">Terms & Conditions</a>
+          <span class="text-muted">&bull;</span>
+          <a href="{{ url_for('contact') }}" class="text-muted text-decoration-none small">Help Center</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Multi-Language Translations -->
+  <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
+  <!-- Internationalization & Text-to-Speech Engine -->
+  <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
+  <!-- Visual Story Animations -->
+  <script src="{{ url_for('static', filename='js/visual-stories.js') }}"></script>
+  <!-- Custom Cyber JavaScript -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
