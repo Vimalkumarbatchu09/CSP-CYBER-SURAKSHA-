@@ -18,7 +18,12 @@ from models import db, User
 from extensions import bcrypt, csrf
 from auth import auth_bp
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+app = Flask(
+    __name__,
+    static_folder=os.path.join(BASE_DIR, 'static'),
+    template_folder=os.path.join(BASE_DIR, 'templates')
+)
 app.config.from_object(Config)
 
 # Initialize Security & Backend Extensions
