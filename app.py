@@ -79,7 +79,11 @@ try:
     use_mysql = True
     print(f"[DATABASE] MySQL connection established. Database `{Config.MYSQL_DATABASE}` ready.")
 except Exception as e:
-    sqlite_path = os.path.join(os.path.dirname(__file__), 'cyber_suraksha.db')
+    # On Vercel / serverless environments, local filesystem is read-only except /tmp
+    if os.environ.get('VERCEL') or os.environ.get('AWS_LAMBDA_FUNCTION_NAME'):
+        sqlite_path = '/tmp/cyber_suraksha.db'
+    else:
+        sqlite_path = os.path.join(os.path.dirname(__file__), 'cyber_suraksha.db')
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{sqlite_path}'
     print(f"[DATABASE NOTICE] MySQL server offline ({e}). Running on local database: {sqlite_path}")
 

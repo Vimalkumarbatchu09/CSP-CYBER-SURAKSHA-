@@ -38,3 +38,5 @@ desktop.ini
 *.log
 scratch/
 tmp/
+
+.vercel
