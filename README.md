@@ -13,7 +13,7 @@
   <a href="#-tech-stack"><img src="https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
   <a href="#-tech-stack"><img src="https://img.shields.io/badge/Flask-3.x-black?style=for-the-badge&logo=flask&logoColor=white" alt="Flask"></a>
   <a href="#-security--authentication-architecture"><img src="https://img.shields.io/badge/Google%20OAuth-2.0-red?style=for-the-badge&logo=google&logoColor=white" alt="Google OAuth"></a>
-  <a href="#-multilingual--voice-accessibility"><img src="https://img.shields.io/badge/Languages-10%20Indian%20Regional-orange?style=for-the-badge" alt="Languages"></a>
+  <a href="#-multilingual-accessibility-en--hi--te--ta"><img src="https://img.shields.io/badge/Languages-EN%20%7C%20HI%20%7C%20TE%20%7C%20TA-orange?style=for-the-badge" alt="Languages"></a>
   <a href="#-automated-test-suite"><img src="https://img.shields.io/badge/Tests-8%2F8%20Passing-brightgreen?style=for-the-badge" alt="Tests"></a>
 </p>
 
@@ -44,7 +44,7 @@ Conventional cybersecurity platforms fail first-time digital citizens due to the
 2. **Cognitive Overload:** Dense text warnings cause users to tap "Accept" or "Allow" simply to dismiss banners, accidentally granting dangerous app permissions.
 3. **Directional Payment Fallacy:** New UPI users often believe that scanning a QR code or entering their UPI PIN is required to *receive* money, making them primary targets for financial fraud.
 
-**Cyber Suraksha** bridges this digital divide through **visual scenario storytelling**, **auditory narration in 10 regional Indian languages**, and an **uncompromising, authentication-first security model**.
+**Cyber Suraksha** bridges this digital divide through **visual scenario storytelling**, **multilingual accessibility in English, Hindi, Telugu, and Tamil**, and an **uncompromising, authentication-first security model**.
 
 ---
 
@@ -55,8 +55,7 @@ Conventional cybersecurity platforms fail first-time digital citizens due to the
   * **Google Sign-In:** One-click OAuth 2.0 / OpenID Connect login via Authlib.
   * **Email & Password:** Cryptographically salted `bcrypt` password hashes (cost factor 12).
 * 🎨 **Progressive 4-Step Visual Story Player:** Interactive scenario walkthroughs showing real-world scams (UPI QR Fraud, Fake Electricity Bill SMS, Digital Arrest Threats, Lottery Traps).
-* 🗣️ **Auditory Narration (Web Speech API):** Browser-native Text-to-Speech (TTS) with dynamic BCP-47 locale switching so non-literate citizens can listen to safety steps in their mother tongue.
-* 🇮🇳 **10 Indian Languages Supported:** Real-time in-browser localization without external API latency (Hindi, Telugu, Tamil, Kannada, Malayalam, Bengali, Marathi, Gujarati, Punjabi, Odia, and English).
+* 🌐 **Multilingual Localization (EN, HI, TE, TA):** Instant in-browser regional translation with clear abbreviation selectors placed prominently in the top navbar and floating switcher (English, Hindi, Telugu, Tamil).
 * 🛡️ **Defensive Simulators:**
   * **Phishing URL Inspector:** Client-side heuristic link analyzer that detects suspicious typosquatting and impersonation domains without tracking history.
   * **Password Bit-Entropy Analyzer:** Real-time strength and crack-time estimator.
@@ -121,21 +120,16 @@ Cyber Suraksha implements enterprise-grade application security principles:
 
 ---
 
-## 🌐 Multilingual & Voice Accessibility
+## 🌐 Multilingual Accessibility (EN | HI | TE | TA)
 
-| Language | Native Script | TTS Locale Code | Support Tier |
-| :--- | :--- | :--- | :--- |
-| **English** | English | `en-IN` / `en-US` | Full UI + Speech |
-| **Hindi** | हिन्दी | `hi-IN` | Full UI + Speech |
-| **Telugu** | తెలుగు | `te-IN` | Full UI + Speech |
-| **Tamil** | தமிழ் | `ta-IN` | Full UI + Speech |
-| **Kannada** | ಕನ್ನಡ | `kn-IN` | Full UI + Speech |
-| **Malayalam** | മലയാളം | `ml-IN` | Full UI + Speech |
-| **Bengali** | বাংলা | `bn-IN` | Full UI + Speech |
-| **Marathi** | मराठी | `mr-IN` | Full UI + Speech |
-| **Gujarati** | ગુજરાતી | `gu-IN` | Full UI + Speech |
-| **Punjabi** | ਪੰਜਾਬੀ | `pa-IN` | Full UI + Speech |
-| **Odia** | ଓଡ଼ିଆ | `or-IN` | Full UI + Speech |
+Cyber Suraksha delivers zero-latency client-side translation across 4 core regional languages with clear abbreviation selectors (`EN`, `HI`, `TE`, `TA`) displayed prominently in the top navigation bar and floating switcher:
+
+| Abbreviation | Language | Native Script | Support Tier |
+| :---: | :--- | :--- | :--- |
+| **EN** | English | English | Full UI Localization |
+| **HI** | Hindi | हिन्दी | Full UI Localization |
+| **TE** | Telugu | తెలుగు | Full UI Localization |
+| **TA** | Tamil | தமிழ் | Full UI Localization |
 
 ---
 

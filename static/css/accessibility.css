@@ -1,15 +1,66 @@
 /* ==========================================================================
    CYBER SURAKSHA — Accessibility & Multi-Language Styles
-   Language Selector, Visual Stories, Text-to-Speech UI
+   Language Selector (Navbar & Floating), Visual Stories
    ========================================================================== */
 
 /* =====================================================
-   1. FLOATING LANGUAGE SELECTOR
+   1. NAVBAR LANGUAGE SWITCHER (Top / Starting)
    ===================================================== */
+.nav-lang-pill-group {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: 3px;
+  gap: 2px;
+}
 
+.nav-lang-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1;
+}
+
+.nav-lang-pill:hover {
+  color: #06231c;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.nav-lang-pill.active {
+  background: #06231c;
+  color: #00f2fe;
+  box-shadow: 0 2px 6px rgba(6, 35, 28, 0.15);
+}
+
+.nav-lang-abbr {
+  font-family: inherit;
+  font-weight: 800;
+}
+
+.nav-lang-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* =====================================================
+   2. FLOATING LANGUAGE SELECTOR (With Abbreviation Badges)
+   ===================================================== */
 .lang-selector-container {
   position: fixed;
-  bottom: 100px;
+  bottom: 24px;
   right: 24px;
   z-index: 9999;
   display: flex;
@@ -23,7 +74,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
+  padding: 9px 16px;
   background: #ffffff;
   border: 1.5px solid #e2e8f0;
   border-radius: 50px;
@@ -32,20 +83,33 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
   white-space: nowrap;
 }
 
 .lang-toggle-btn:hover {
   background: #f8fafc;
   border-color: #cbd5e1;
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
   transform: translateY(-1px);
 }
 
 .lang-toggle-btn i {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #059669;
+}
+
+.lang-toggle-abbr-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  background: #06231c;
+  color: #00f2fe;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .lang-toggle-label {
@@ -55,15 +119,15 @@
 /* Language Dropdown */
 .lang-dropdown {
   position: absolute;
-  bottom: 60px;
+  bottom: 54px;
   right: 0;
-  width: 320px;
+  width: 310px;
   max-height: 0;
   overflow: hidden;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
   opacity: 0;
   transform: translateY(10px) scale(0.95);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -71,7 +135,7 @@
 }
 
 .lang-dropdown.open {
-  max-height: 500px;
+  max-height: 400px;
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: all;
@@ -81,72 +145,90 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 18px 10px;
+  padding: 12px 16px;
   font-weight: 700;
   color: #0f172a;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   border-bottom: 1px solid #f1f5f9;
 }
 
 .lang-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4px;
+  gap: 6px;
   padding: 10px;
-  max-height: 380px;
-  overflow-y: auto;
-}
-
-.lang-grid::-webkit-scrollbar {
-  width: 4px;
-}
-
-.lang-grid::-webkit-scrollbar-thumb {
-  background: rgba(0, 242, 254, 0.3);
-  border-radius: 4px;
 }
 
 .lang-option {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 12px;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 8px;
+  padding: 10px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
   color: #334155;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.18s ease;
   position: relative;
   text-align: left;
 }
 
 .lang-option:hover {
-  background: #f1f5f9;
-  border-color: #e2e8f0;
-  color: #0f172a;
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.08);
+  transform: translateY(-1px);
 }
 
 .lang-option.active {
   background: #ecfdf5;
-  border-color: #a7f3d0;
+  border-color: #059669;
   color: #047857;
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.12);
 }
 
-.lang-flag {
-  font-size: 1.2rem;
+.lang-abbr-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 28px;
+  background: #06231c;
+  color: #00f2fe;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
   flex-shrink: 0;
 }
 
+.lang-option.active .lang-abbr-tag {
+  background: #047857;
+  color: #ffffff;
+}
+
+.lang-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .lang-native {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.84rem;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #0f172a;
 }
 
 .lang-english {
-  display: none;
+  font-size: 0.72rem;
+  color: #64748b;
+  white-space: nowrap;
 }
 
 .lang-check {
@@ -157,92 +239,12 @@
   color: #059669;
 }
 
-
-/* =====================================================
-   2. TEXT-TO-SPEECH BUTTONS
-   ===================================================== */
-
-/* Section TTS Button (inline with headings) */
-.tts-section-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  margin-left: 10px;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  border-radius: 50%;
-  color: #047857;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  vertical-align: middle;
-}
-.tts-section-btn:hover {
-  background: #047857;
-  color: #ffffff;
-  border-color: #047857;
-}
-}
-
-.tts-section-btn:hover {
-  background: rgba(0, 242, 254, 0.2);
-  border-color: rgba(0, 242, 254, 0.6);
-  transform: scale(1.1);
-}
-
-.tts-section-btn.speaking {
-  background: rgba(0, 242, 254, 0.25);
-  border-color: #00f2fe;
-  animation: ttsPulse 1.5s infinite;
-}
-
-/* Global TTS Button (fixed position) */
-.global-tts-btn {
-  position: fixed;
-  bottom: 160px;
-  right: 24px;
-  z-index: 9998;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 18px;
-  background: linear-gradient(135deg, #1a0a28 0%, #2d0f47 100%);
-  border: 1.5px solid rgba(168, 85, 247, 0.4);
-  border-radius: 50px;
-  color: #c084fc;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.15);
-}
-
-.global-tts-btn:hover {
-  background: linear-gradient(135deg, #2d0f47 0%, #3d1a5e 100%);
-  border-color: rgba(168, 85, 247, 0.7);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 25px rgba(168, 85, 247, 0.25);
-}
-
-.global-tts-btn.speaking {
-  border-color: #c084fc;
-  animation: ttsPulse 1.5s infinite;
-}
-
-.global-tts-btn i {
-  font-size: 1.1rem;
-}
-
-.global-tts-label {
-  font-size: 0.8rem;
-}
-
-@keyframes ttsPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(0, 242, 254, 0); }
+/* TTS / Listen elements removed per user specification */
+.global-tts-btn,
+.tts-section-btn,
+.story-tts-btn,
+.story-listen-btn {
+  display: none !important;
 }
 
 
@@ -806,23 +808,13 @@
 
 @media (max-width: 767px) {
   .lang-selector-container {
-    bottom: 80px;
+    bottom: 20px;
     right: 16px;
   }
 
   .lang-dropdown {
     width: 280px;
     right: -10px;
-  }
-
-  .global-tts-btn {
-    bottom: 140px;
-    right: 16px;
-    padding: 8px 14px;
-  }
-
-  .global-tts-label {
-    display: none;
   }
 
   .visual-story-grid {

@@ -12,7 +12,7 @@
 
 **Cyber Suraksha** is an assistive, privacy-first cybersecurity education and threat prevention web platform. It is engineered specifically for citizens who have newly acquired smartphones, do not speak or read English, and lack foundational knowledge of cyber threats.
 
-Instead of presenting technical academic jargon and dense text, Cyber Suraksha visualizes cyber attacks through **progressive 4-step visual scenario stories**, provides **real-time multilingual text in 10 Indian regional languages**, and integrates **browser-native Text-to-Speech (TTS) auditory guidance** so anyone can listen and understand regardless of literacy level.
+Instead of presenting technical academic jargon and dense text, Cyber Suraksha visualizes cyber attacks through **progressive 4-step visual scenario stories** and provides **real-time multilingual text across 4 core languages (English, Hindi, Telugu, and Tamil) with clear abbreviation selectors (EN | HI | TE | TA)** placed prominently in the top navbar and floating switcher.
 
 ---
 
@@ -67,8 +67,7 @@ Cyber Suraksha is built using a secure full-stack architecture combining a Pytho
 - **Anti-Cache Protection:** Strict `Cache-Control: no-store, no-cache, must-revalidate` response headers preventing browser back-navigation leakage after logout.
 - **Markup & Semantics:** HTML5 Jinja2 templates with ARIA accessibility tags (`aria-live`, `aria-expanded`).
 - **Styling & Layout:** CSS3, Bootstrap 5.3, custom media queries, and high-contrast accessibility styles (`accessibility.css`).
-- **Multilingual Subsystem:** Custom dictionary-driven i18n engine (`translations.js`, `i18n.js`) supporting 10 Indian languages.
-- **Voice & Speech Engine:** W3C Web Speech API (`window.speechSynthesis`) configured with dynamic BCP-47 locale switching.
+- **Multilingual Subsystem:** Custom dictionary-driven i18n engine (`translations.js`, `i18n.js`) supporting English (`EN`), Hindi (`HI`), Telugu (`TE`), and Tamil (`TA`) with prominent abbreviation selectors.
 
 ---
 
@@ -80,8 +79,7 @@ Cyber Suraksha is built using a secure full-stack architecture combining a Pytho
 - **Journey:** 
   1. Opens Cyber Suraksha and taps the language selector to switch to their native language (e.g., Telugu or Tamil).
   2. Taps **Threats** and opens the **UPI / QR Code Fraud** story.
-  3. Taps the **"Listen"** button to hear an explanation in their mother tongue.
-  4. Follows the 4-step visual progression showing that scanning a QR code is exclusively for *paying out*, permanently preventing money loss.
+  3. Follows the 4-step visual progression showing that scanning a QR code is exclusively for *paying out*, permanently preventing money loss.
 
 ### Use Case 2: The Citizen Receiving an Intimidating Call or Fake Message
 - **User:** A citizen receiving an urgent SMS claiming their electricity will be disconnected or a call threatening "digital arrest by police".
@@ -114,7 +112,7 @@ Cyber Suraksha is built using a secure full-stack architecture combining a Pytho
 | :--- | :--- | :--- |
 | [`index.html`](file:///c:/Users/HP/OneDrive/Desktop/CSP_PROJECT/index.html) | **Home & Mission Portal** | High-level mission overview, core defense pillars, quick threat cards, direct helpline access. |
 | [`threats.html`](file:///c:/Users/HP/OneDrive/Desktop/CSP_PROJECT/threats.html) | **Threat Knowledge Base** | In-depth profiles of 8 primary attack vectors with severity ratings, warning signs, and defenses. |
-| [`js/visual-stories.js`](file:///c:/Users/HP/OneDrive/Desktop/CSP_PROJECT/js/visual-stories.js) | **Visual Story Player** | Interactive 4-step progressive modal scenario player with color-coded safety meters and TTS. |
+| [`js/visual-stories.js`](file:///c:/Users/HP/OneDrive/Desktop/CSP_PROJECT/js/visual-stories.js) | **Visual Story Player** | Interactive 4-step progressive modal scenario player with color-coded safety meters. |
 | [`tools.html`](file:///c:/Users/HP/OneDrive/Desktop/CSP_PROJECT/tools.html) | **Defensive Simulators** | Client-side Phishing Link Inspector, Password Bit-Entropy Analyzer, and Security Checklist. |
 | [`mfa.html`](file:///c:/Users/HP/OneDrive/Desktop/CSP_PROJECT/mfa.html) | **MFA Master Guide** | Visual walkthroughs for enabling two-step verification on WhatsApp, Google, and banking portals. |
 | [`awareness.html`](file:///c:/Users/HP/OneDrive/Desktop/CSP_PROJECT/awareness.html) | **Cyber Awareness Guide** | 8 Golden Cybersecurity Habits and an intuitive "Dos and Don'ts" visual matrix. |

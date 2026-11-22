@@ -680,20 +680,8 @@ function _renderVideoView(story, container) {
         '<div class="d-flex align-items-center gap-2">' +
         '  <span class="badge bg-danger"><i class="bi bi-play-circle-fill me-1"></i> Animated Attack Explainer</span>' +
         '  <span class="text-secondary small"><i class="bi bi-award me-1"></i> ' + _esc(story.channel) + '</span>' +
-        '</div>' +
-        '<button type="button" class="btn btn-sm btn-outline-info story-tts-btn" id="videoSpeechBtn">' +
-        '  <i class="bi bi-volume-up-fill me-1"></i> ' + _esc(getTranslation('listen_step')) +
-        '</button>';
+        '</div>';
     container.appendChild(meta);
-
-    // Audio narration for this threat
-    var speechBtn = meta.querySelector('#videoSpeechBtn');
-    if (speechBtn) {
-        speechBtn.addEventListener('click', function () {
-            var textToSpeak = getTranslation(story.titleKey) + '. ' + getTranslation(story.preventionKey);
-            _speakText(textToSpeak, speechBtn);
-        });
-    }
 
     // Prevention Advice Box
     var prevBox = document.createElement('div');
@@ -847,16 +835,6 @@ function _renderStep(story, index) {
     desc.textContent = getTranslation(step.descKey);
     stepEl.appendChild(desc);
 
-    // Listen aloud button for this step
-    var listenBtn = document.createElement('button');
-    listenBtn.className = 'btn btn-sm btn-outline-info rounded-pill px-3 py-1';
-    listenBtn.innerHTML = '<i class="bi bi-volume-up-fill me-1"></i> ' + _esc(getTranslation('listen_step'));
-    listenBtn.addEventListener('click', function () {
-        var text = getTranslation(step.titleKey) + '. ' + getTranslation(step.descKey);
-        _speakText(text, listenBtn);
-    });
-    stepEl.appendChild(listenBtn);
-
     area.innerHTML = '';
     area.appendChild(stepEl);
 
@@ -980,44 +958,11 @@ function _resetAutoPlay(story) {
 /* ------------------------------------------------------------------ */
 
 function _speakText(text, btnElement) {
-    if (typeof window !== 'undefined' && window.CyberI18n && typeof window.CyberI18n.speak === 'function') {
-        window.CyberI18n.speak(text);
-        return;
-    }
-
-    if (!('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-
-    var utterance = new SpeechSynthesisUtterance(text);
-    var lang =
-        (typeof currentLanguage !== 'undefined' && currentLanguage) ||
-        localStorage.getItem('cyber_suraksha_language') ||
-        'en';
-
-    var langMap = {
-        en: 'en-US', hi: 'hi-IN', te: 'te-IN', ta: 'ta-IN',
-        kn: 'kn-IN', ml: 'ml-IN', mr: 'mr-IN', bn: 'bn-IN',
-        gu: 'gu-IN', pa: 'pa-IN'
-    };
-    utterance.lang = langMap[lang] || 'en-US';
-    utterance.rate = 0.9;
-
-    if (btnElement) {
-        var original = btnElement.innerHTML;
-        btnElement.innerHTML = '<i class="bi bi-soundwave text-warning me-1"></i> Speaking...';
-        utterance.onend = function () { btnElement.innerHTML = original; };
-        utterance.onerror = function () { btnElement.innerHTML = original; };
-    }
-
-    window.speechSynthesis.speak(utterance);
+    // Audio / Listen feature removed per user specification
 }
 
 function _stopSpeech() {
-    if (typeof window !== 'undefined' && window.CyberI18n && typeof window.CyberI18n.stopSpeech === 'function') {
-        window.CyberI18n.stopSpeech();
-    } else if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-    }
+    // Audio / Listen feature removed per user specification
 }
 
 /* ------------------------------------------------------------------ */
