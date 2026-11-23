@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "https://cyber-suraksha.onrender.com/$1"
+      "destination": "https://csp-cyber-suraksha.onrender.com/$1"
     }
   ]
 }
