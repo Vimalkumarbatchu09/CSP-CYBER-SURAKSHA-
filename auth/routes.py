@@ -132,6 +132,7 @@ def google_login():
 
 
 @auth_bp.route('/google/callback')
+@auth_bp.route('/auth/google/callback')
 def google_callback():
     """Handles Google OAuth authorization response."""
     oauth = current_app.extensions.get('authlib.integrations.flask_client')
