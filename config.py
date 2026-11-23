@@ -19,13 +19,18 @@ class Config:
     MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', 'CyberSuraksha@2026')
     MYSQL_DATABASE = os.getenv('MYSQL_DATABASE', 'cyber_suraksha')
 
-    # Properly URL-encode password in case it contains special characters like '@'
-    _encoded_password = urllib.parse.quote_plus(MYSQL_PASSWORD)
-
-    SQLALCHEMY_DATABASE_URI = (
-        f"mysql+pymysql://{MYSQL_USER}:{_encoded_password}"
-        f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
-    )
+    _raw_db_url = os.getenv('DATABASE_URL')
+    if _raw_db_url:
+        if _raw_db_url.startswith('postgres://'):
+            _raw_db_url = _raw_db_url.replace('postgres://', 'postgresql://', 1)
+        SQLALCHEMY_DATABASE_URI = _raw_db_url
+    else:
+        # Properly URL-encode password in case it contains special characters like '@'
+        _encoded_password = urllib.parse.quote_plus(MYSQL_PASSWORD)
+        SQLALCHEMY_DATABASE_URI = (
+            f"mysql+pymysql://{MYSQL_USER}:{_encoded_password}"
+            f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
+        )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Session security

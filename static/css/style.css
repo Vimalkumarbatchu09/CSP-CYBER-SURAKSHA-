@@ -166,11 +166,11 @@ h1, h2, h3, h4, h5, h6, .brand-font {
 
 /* --- Modern SaaS Floating Navigation Bar --- */
 .navbar-cyber {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
-  padding: 0.75rem 0;
+  padding: 0.5rem 0;
   transition: var(--transition-smooth);
   box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
 }
@@ -178,32 +178,49 @@ h1, h2, h3, h4, h5, h6, .brand-font {
 .navbar-cyber.scrolled {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
-  padding: 0.6rem 0;
+  padding: 0.42rem 0;
+}
+
+.navbar-cyber .container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 100%;
+}
+
+.navbar-cyber .navbar-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.1rem;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.45rem;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.35rem;
+  font-size: 1.18rem;
   color: var(--brand-navy) !important;
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
 }
 
 .brand-icon-wrapper {
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   background: var(--brand-soft-mint);
   border: 1.5px solid var(--status-safe-border);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--brand-primary);
-  font-size: 1.15rem;
+  font-size: 1rem;
   transition: var(--transition-smooth);
+  flex-shrink: 0;
 }
 
 .navbar-brand:hover .brand-icon-wrapper {
@@ -213,13 +230,24 @@ h1, h2, h3, h4, h5, h6, .brand-font {
 }
 
 .nav-link {
-  font-size: 0.9rem;
+  font-size: 0.81rem;
   font-weight: 500;
   color: var(--text-secondary) !important;
-  padding: 0.5rem 0.85rem !important;
+  padding: 0.35rem 0.42rem !important;
   border-radius: 8px;
   transition: var(--transition-smooth);
   position: relative;
+  white-space: nowrap;
+}
+
+@media (max-width: 1366px) {
+  .nav-link {
+    font-size: 0.77rem;
+    padding: 0.28rem 0.32rem !important;
+  }
+  .navbar-cyber .navbar-nav {
+    gap: 0.05rem;
+  }
 }
 
 .nav-link:hover {
@@ -247,7 +275,23 @@ h1, h2, h3, h4, h5, h6, .brand-font {
 }
 
 /* User Account Dropdown Pill */
+.navbar .dropdown {
+  flex-shrink: 0;
+  margin-left: 0.45rem;
+}
+
 .navbar .btn-outline-info {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0.38rem 0.75rem !important;
+  border-radius: 8px;
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition-smooth);
+  white-space: nowrap;
+}
   background-color: #ffffff;
   border: 1px solid var(--border-color) !important;
   color: var(--text-primary) !important;
@@ -360,6 +404,15 @@ h1, h2, h3, h4, h5, h6, .brand-font {
   border-color: var(--border-hover);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+}
+
+.cyber-card h1, .cyber-card h2, .cyber-card h3, .cyber-card h4, .cyber-card h5, .cyber-card h6 {
+  color: var(--text-heading) !important;
+  font-weight: 700;
+}
+
+.cyber-card p {
+  color: var(--text-secondary);
 }
 
 /* Card Icon Container */
@@ -816,46 +869,48 @@ section.bg-secondary.bg-opacity-10 {
 
 /* High-Contrast Cyber Hygiene Section (Do's & Don'ts in awareness.html) */
 .cyber-hygiene-section {
-  background: #ffffff !important;
+  background: #f8fafc !important;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
 
 .dos-card {
-  background: var(--status-safe-bg) !important;
-  border: 1.5px solid var(--status-safe-border) !important;
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
   border-radius: 14px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.08);
   transition: var(--transition-smooth);
 }
 .dos-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.14);
   transform: translateY(-2px);
+  border-color: #4ade80 !important;
 }
 
 .donts-card {
-  background: var(--status-danger-bg) !important;
-  border: 1.5px solid var(--status-danger-border) !important;
+  background: #fef2f2 !important;
+  border: 1.5px solid #fca5a5 !important;
   border-radius: 14px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.08);
   transition: var(--transition-smooth);
 }
 .donts-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.14);
   transform: translateY(-2px);
+  border-color: #f87171 !important;
 }
 
 .dos-card .check-item {
-  color: #065f46 !important;
+  color: #14532d !important;
   font-size: 0.95rem;
   line-height: 1.6;
 }
 .dos-card .check-item strong {
-  color: #022c22 !important;
+  color: #052e16 !important;
 }
 
 .donts-card .check-item {
-  color: #991b1b !important;
+  color: #7f1d1d !important;
   font-size: 0.95rem;
   line-height: 1.6;
 }

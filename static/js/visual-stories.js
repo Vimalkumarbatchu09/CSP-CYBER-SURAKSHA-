@@ -522,8 +522,8 @@ function playStory(storyId, initialMode) {
     overlay.setAttribute('aria-modal', 'true');
     overlay.setAttribute('aria-label', getTranslation(story.titleKey));
     overlay.style.cssText =
-        'position:fixed;inset:0;z-index:99999;background:rgba(2,6,18,0.95);' +
-        'backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);' +
+        'position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,0.65);' +
+        'backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);' +
         'display:flex;align-items:center;justify-content:center;' +
         'opacity:1;pointer-events:auto;transition:opacity .25s ease;';
 
@@ -532,24 +532,26 @@ function playStory(storyId, initialMode) {
     inner.className = 'story-overlay-inner';
     inner.id = 'storyModalInner';
     inner.style.cssText =
-        'pointer-events:auto;background:linear-gradient(160deg, #0d1527 0%, #080f1e 100%);' +
-        'color:#fff;border:1.5px solid rgba(0,242,254,0.4);border-radius:1.25rem;' +
-        'max-width:720px;width:95%;max-height:94vh;overflow-y:auto;display:flex;' +
+        'pointer-events:auto;background:#ffffff;' +
+        'color:#0f172a;border:1.5px solid #e2e8f0;border-radius:1.25rem;' +
+        'max-width:740px;width:95%;max-height:94vh;overflow-y:auto;display:flex;' +
         'flex-direction:column;position:relative;' +
-        'box-shadow:0 20px 60px rgba(0,0,0,0.9), 0 0 35px rgba(0,242,254,0.2);';
+        'box-shadow:0 25px 60px -15px rgba(15,23,42,0.25), 0 0 25px rgba(5,150,105,0.12);';
 
     /* ---- Header Bar ---- */
     var hdr = document.createElement('div');
     hdr.style.cssText =
-        'padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.1);' +
-        'display:flex;align-items:center;justify-content:space-between;color:#fff;position:sticky;top:0;background:rgba(13,21,39,0.95);backdrop-filter:blur(10px);z-index:10;';
+        'padding:1rem 1.35rem;border-bottom:1px solid #e2e8f0;' +
+        'display:flex;align-items:center;justify-content:space-between;color:#061e18;position:sticky;top:0;background:#ffffff;border-radius:1.25rem 1.25rem 0 0;z-index:10;';
 
     var hdrTitle = document.createElement('div');
     hdrTitle.className = 'd-flex align-items-center gap-2';
     hdrTitle.innerHTML =
-        '<i class="bi ' + story.icon + ' fs-4 text-' + story.colorClass + '"></i>' +
+        '<div style="width:36px;height:36px;border-radius:9px;background:#ecfdf5;border:1px solid #a7f3d0;display:flex;align-items:center;justify-content:center;">' +
+        '  <i class="bi ' + story.icon + ' fs-5 text-success"></i>' +
+        '</div>' +
         '<div>' +
-        '  <h5 class="fw-bold mb-0 text-white" style="font-size:1.1rem;">' + _esc(getTranslation(story.titleKey)) + '</h5>' +
+        '  <h5 class="fw-bold mb-0" style="color:#061e18 !important;font-size:1.15rem;letter-spacing:-0.01em;">' + _esc(getTranslation(story.titleKey)) + '</h5>' +
         '</div>';
 
     // Guaranteed-clickable Close Button (X)
@@ -559,7 +561,20 @@ function playStory(storyId, initialMode) {
     closeBtn.setAttribute('type', 'button');
     closeBtn.setAttribute('aria-label', getTranslation('close_story') || 'Close');
     closeBtn.setAttribute('title', 'Close (X) and return to webpage');
-    closeBtn.innerHTML = '<i class="bi bi-x-lg" style="pointer-events:none;font-size:1.2rem;"></i>';
+    closeBtn.style.cssText =
+        'position:static;width:34px;height:34px;border-radius:50%;background:#f1f5f9;border:1px solid #e2e8f0;color:#475569;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s ease;';
+    closeBtn.innerHTML = '<i class="bi bi-x-lg" style="pointer-events:none;font-size:1rem;"></i>';
+
+    closeBtn.onmouseenter = function () {
+        this.style.background = '#fee2e2';
+        this.style.borderColor = '#fca5a5';
+        this.style.color = '#dc2626';
+    };
+    closeBtn.onmouseleave = function () {
+        this.style.background = '#f1f5f9';
+        this.style.borderColor = '#e2e8f0';
+        this.style.color = '#475569';
+    };
 
     closeBtn.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
@@ -663,6 +678,7 @@ function _renderVideoView(story, container) {
     // Responsive 16:9 YouTube Video Embed
     var videoWrap = document.createElement('div');
     videoWrap.className = 'story-video-wrapper';
+    videoWrap.style.cssText = 'border-radius:12px;overflow:hidden;background:#000;box-shadow:0 8px 24px rgba(15,23,42,0.12);margin-bottom:14px;';
     videoWrap.innerHTML =
         '<iframe id="storyVideoIframe" ' +
         '  src="https://www.youtube-nocookie.com/embed/' + story.youtubeId + '?autoplay=1&rel=0&modestbranding=1" ' +
@@ -678,31 +694,32 @@ function _renderVideoView(story, container) {
     meta.className = 'd-flex align-items-center justify-content-between flex-wrap gap-2 mb-3';
     meta.innerHTML =
         '<div class="d-flex align-items-center gap-2">' +
-        '  <span class="badge bg-danger"><i class="bi bi-play-circle-fill me-1"></i> Animated Attack Explainer</span>' +
-        '  <span class="text-secondary small"><i class="bi bi-award me-1"></i> ' + _esc(story.channel) + '</span>' +
+        '  <span class="badge" style="background:#dc2626;color:#ffffff;padding:6px 12px;border-radius:50px;font-weight:600;"><i class="bi bi-play-circle-fill me-1"></i> Animated Attack Explainer</span>' +
+        '  <span class="small" style="color:#64748b;font-weight:500;"><i class="bi bi-award-fill me-1 text-warning"></i> ' + _esc(story.channel) + '</span>' +
         '</div>';
     container.appendChild(meta);
 
     // Prevention Advice Box
     var prevBox = document.createElement('div');
     prevBox.className = 'story-prevention mb-3';
-    prevBox.style.cssText = 'padding:1rem 1.25rem;border-radius:.75rem;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);';
+    prevBox.style.cssText = 'padding:1.1rem 1.25rem;border-radius:12px;background:#ecfdf5;border:1.5px solid #a7f3d0;';
     prevBox.innerHTML =
-        '<div class="fw-bold text-success mb-1 fs-6"><i class="bi bi-shield-check me-2"></i>' + _esc(getTranslation('stay_safe')) + '</div>' +
-        '<div class="text-light small">' + _esc(getTranslation(story.preventionKey)) + '</div>';
+        '<div class="fw-bold mb-1 fs-6 d-flex align-items-center gap-2" style="color:#047857;"><i class="bi bi-shield-check fs-5"></i>' + _esc(getTranslation('stay_safe')) + '</div>' +
+        '<div class="small" style="color:#064e3b;line-height:1.55;font-size:0.92rem;">' + _esc(getTranslation(story.preventionKey)) + '</div>';
     container.appendChild(prevBox);
 
     // Bottom Action Bar
     var actions = document.createElement('div');
-    actions.className = 'd-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top border-secondary border-opacity-25 mt-auto';
+    actions.className = 'd-flex align-items-center justify-content-between flex-wrap gap-2 pt-3 border-top mt-auto';
+    actions.style.borderColor = '#e2e8f0';
 
     var switchBtn = document.createElement('button');
-    switchBtn.className = 'btn btn-outline-info btn-sm';
+    switchBtn.className = 'btn btn-outline-success btn-sm fw-semibold';
     switchBtn.innerHTML = '<i class="bi bi-collection-play me-1"></i> ' + _esc(getTranslation('tab_story'));
     switchBtn.onclick = function () { _switchTab(story, 'story'); };
 
     var exitBtn = document.createElement('button');
-    exitBtn.className = 'btn btn-outline-light btn-sm';
+    exitBtn.className = 'btn btn-outline-secondary btn-sm';
     exitBtn.id = 'videoExitBtn';
     exitBtn.innerHTML = '<i class="bi bi-x-circle me-1"></i> ' + _esc(getTranslation('back_to_page'));
     exitBtn.onclick = _closeStory;
@@ -728,7 +745,7 @@ function _renderStoryView(story, container) {
         dot.className = 'story-progress-dot';
         dot.setAttribute('data-index', i);
         dot.style.cssText =
-            'width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all .3s ease;cursor:pointer;';
+            'width:14px;height:14px;border-radius:50%;background:#e2e8f0;border:2px solid #cbd5e1;transition:all .3s ease;cursor:pointer;';
         dot.addEventListener('click', function () { _goToStep(story, i); });
         progressBar.appendChild(dot);
     });
@@ -738,7 +755,7 @@ function _renderStoryView(story, container) {
     var stepArea = document.createElement('div');
     stepArea.className = 'story-step-area';
     stepArea.id = 'storyStepArea';
-    stepArea.style.cssText = 'padding:1.25rem 1rem;flex:1;min-height:240px;position:relative;color:#fff;';
+    stepArea.style.cssText = 'padding:1.5rem 1.25rem;flex:1;min-height:240px;position:relative;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;margin-bottom:1rem;color:#0f172a;';
     container.appendChild(stepArea);
 
     /* Prevention area */
@@ -746,29 +763,31 @@ function _renderStoryView(story, container) {
     prevArea.className = 'story-prevention';
     prevArea.id = 'storyPrevention';
     prevArea.style.cssText =
-        'display:none;padding:1rem 1.25rem;margin-bottom:1rem;border-radius:.75rem;' +
-        'background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);color:#fff;';
+        'display:none;padding:1.1rem 1.25rem;margin-bottom:1rem;border-radius:12px;' +
+        'background:#ecfdf5;border:1.5px solid #a7f3d0;color:#064e3b;';
     prevArea.innerHTML =
-        '<div class="fw-bold text-success mb-1 fs-6"><i class="bi bi-shield-check me-2"></i>' + _esc(getTranslation('stay_safe')) + '</div>' +
-        '<div class="text-light small">' + _esc(getTranslation(story.preventionKey)) + '</div>';
+        '<div class="fw-bold mb-1 fs-6 d-flex align-items-center gap-2" style="color:#047857;"><i class="bi bi-shield-check fs-5"></i>' + _esc(getTranslation('stay_safe')) + '</div>' +
+        '<div class="small" style="color:#064e3b;line-height:1.55;font-size:0.92rem;">' + _esc(getTranslation(story.preventionKey)) + '</div>';
     container.appendChild(prevArea);
 
     /* Controls */
     var controls = document.createElement('div');
-    controls.className = 'story-controls d-flex justify-content-between align-items-center pt-3 border-top border-secondary border-opacity-25 mt-auto';
+    controls.className = 'story-controls d-flex justify-content-between align-items-center pt-3 border-top mt-auto';
+    controls.style.borderColor = '#e2e8f0';
 
     var prevBtn = document.createElement('button');
-    prevBtn.className = 'btn btn-sm btn-outline-light';
+    prevBtn.className = 'btn btn-sm btn-outline-secondary';
     prevBtn.id = 'storyPrevBtn';
     prevBtn.innerHTML = '<i class="bi bi-chevron-left me-1"></i>' + _esc(getTranslation('prev_step'));
     prevBtn.addEventListener('click', function () { _prevStep(story); });
 
     var stepIndicator = document.createElement('span');
     stepIndicator.id = 'storyStepIndicator';
-    stepIndicator.className = 'text-light small font-mono';
+    stepIndicator.className = 'small fw-semibold';
+    stepIndicator.style.color = '#64748b';
 
     var nextBtn = document.createElement('button');
-    nextBtn.className = 'btn btn-sm btn-primary';
+    nextBtn.className = 'btn btn-sm btn-success fw-semibold';
     nextBtn.id = 'storyNextBtn';
     nextBtn.innerHTML = _esc(getTranslation('next_step')) + '<i class="bi bi-chevron-right ms-1"></i>';
     nextBtn.addEventListener('click', function () { _nextStep(story); });
@@ -818,20 +837,21 @@ function _renderStep(story, index) {
     // Large emoji
     var emoji = document.createElement('div');
     emoji.className = 'story-emoji';
-    emoji.style.cssText = 'font-size:4.5rem;line-height:1.1;margin-bottom:0.75rem;filter:drop-shadow(0 0 15px rgba(255,255,255,0.2));';
+    emoji.style.cssText = 'font-size:4.5rem;line-height:1.1;margin-bottom:0.75rem;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.08));';
     emoji.textContent = step.emoji;
     stepEl.appendChild(emoji);
 
     // Title
     var title = document.createElement('h5');
-    title.className = 'fw-bold text-white mb-2';
+    title.className = 'fw-bold mb-2';
+    title.style.cssText = 'color:#061e18 !important;font-size:1.15rem;font-weight:700;';
     title.textContent = getTranslation(step.titleKey);
     stepEl.appendChild(title);
 
     // Description
     var desc = document.createElement('p');
-    desc.className = 'text-light opacity-90 mb-3';
-    desc.style.fontSize = '1.02rem';
+    desc.className = 'mb-3';
+    desc.style.cssText = 'color:#475569;font-size:0.98rem;line-height:1.55;max-width:540px;margin:0 auto 1rem;';
     desc.textContent = getTranslation(step.descKey);
     stepEl.appendChild(desc);
 
@@ -859,7 +879,7 @@ function _updateDots(story, activeIndex) {
             dot.style.transform = 'scale(1.4)';
             dot.style.boxShadow = '0 0 0 3px ' + _levelColors[step.level] + '40';
         } else {
-            dot.style.background = 'rgba(255,255,255,0.2)';
+            dot.style.background = '#cbd5e1';
             dot.style.transform = 'scale(1)';
             dot.style.boxShadow = 'none';
         }

@@ -77,16 +77,16 @@
 
   <!-- Minimal SaaS Navbar -->
   <nav class="navbar navbar-expand-lg navbar-cyber fixed-top">
-    <div class="container">
+    <div class="container-fluid px-3 px-xl-4">
       <a class="navbar-brand" href="{{ url_for('auth.login') }}">
         <div class="brand-icon-wrapper">
           <i class="bi bi-shield-check"></i>
         </div>
-        <span>Cyber <span class="text-cyan">Suraksha</span></span>
+        <span class="notranslate">Cyber <span class="text-cyan">Suraksha</span></span>
       </a>
       <div class="d-flex align-items-center gap-2">
-        <span class="text-muted small d-none d-sm-inline">Have an account?</span>
-        <a href="{{ url_for('auth.login') }}" class="btn btn-cyber-primary btn-sm px-3 py-2">
+        <span class="text-muted small d-none d-sm-inline" data-i18n="auth_already_account">Have an account?</span>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-cyber-primary btn-sm px-3 py-2" data-i18n="auth_login_title">
           Sign In
         </a>
       </div>
@@ -107,8 +107,8 @@
                   <i class="bi bi-person-check-fill"></i> Free Community Registration
                 </span>
               </div>
-              <h2 class="h4 fw-bold text-heading mb-1">Create your account</h2>
-              <p class="text-muted small mb-0">Join Cyber Suraksha to protect your family and digital identity</p>
+              <h2 class="h4 fw-bold text-heading mb-1" data-i18n="auth_signup_title">Create your account</h2>
+              <p class="text-muted small mb-0" data-i18n="auth_signup_subtitle">Join Cyber Suraksha to protect your family and digital identity</p>
             </div>
 
             <!-- Flash Alert Messages -->
@@ -218,14 +218,14 @@
 
               <!-- Submit Button -->
               <button type="submit" class="btn btn-cyber-primary w-100 py-2 mb-3">
-                <span>Create Free Account</span>
+                <span data-i18n="auth_create_account">Create Free Account</span>
                 <i class="bi bi-arrow-right ms-1"></i>
               </button>
 
               <!-- Login Link -->
               <div class="text-center pt-2">
-                <span class="text-muted small">Already have an account? </span>
-                <a href="{{ url_for('auth.login') }}" class="text-cyan small fw-semibold text-decoration-none">
+                <span class="text-muted small" data-i18n="auth_already_account">Already have an account? </span>
+                <a href="{{ url_for('auth.login') }}" class="text-cyan small fw-semibold text-decoration-none" data-i18n="auth_login_title">
                   Sign in here
                 </a>
               </div>
@@ -250,6 +250,10 @@
 
   <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Multi-Language Translation Dictionaries -->
+  <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
+  <!-- Internationalization (i18n) Engine -->
+  <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
   <!-- Password Visibility Toggle Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {

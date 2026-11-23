@@ -12,36 +12,38 @@
   background: #f1f5f9;
   border: 1px solid #e2e8f0;
   border-radius: 9999px;
-  padding: 3px;
+  padding: 2px 3px;
   gap: 2px;
+  flex-shrink: 0;
 }
 
 .nav-lang-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 10px;
+  padding: 3px 7px;
   border-radius: 9999px;
   border: none;
   background: transparent;
   color: #64748b;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   line-height: 1;
+  white-space: nowrap;
 }
 
 .nav-lang-pill:hover {
-  color: #06231c;
-  background: rgba(255, 255, 255, 0.7);
+  color: #061e18;
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .nav-lang-pill.active {
-  background: #06231c;
-  color: #00f2fe;
-  box-shadow: 0 2px 6px rgba(6, 35, 28, 0.15);
+  background: #059669;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
 }
 
 .nav-lang-abbr {
@@ -50,9 +52,17 @@
 }
 
 .nav-lang-label {
-  font-size: 0.72rem;
-  font-weight: 500;
-  opacity: 0.85;
+  display: none;
+}
+
+@media (min-width: 1440px) {
+  .nav-lang-label {
+    display: inline;
+    font-size: 0.71rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-left: 2px;
+  }
 }
 
 /* =====================================================
@@ -315,9 +325,17 @@
   transition: transform 0.2s ease;
 }
 
-.step-preview-dot.safe { background: #10b981; }
-.step-preview-dot.warning { background: #f59e0b; }
-.step-preview-dot.danger { background: #ef4444; }
+.step-preview-dot.safe {
+  background: #10b981;
+}
+
+.step-preview-dot.warning {
+  background: #f59e0b;
+}
+
+.step-preview-dot.danger {
+  background: #ef4444;
+}
 
 .visual-story-card:hover .step-preview-dot {
   transform: scale(1.2);
@@ -423,7 +441,8 @@
 .story-video-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 ratio */
+  padding-bottom: 56.25%;
+  /* 16:9 ratio */
   height: 0;
   overflow: hidden;
   border-radius: 12px;
@@ -446,17 +465,18 @@
   display: flex;
   gap: 8px;
   padding: 10px 18px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
 }
 
 .story-mode-tab {
   padding: 8px 18px;
   border: none;
   background: transparent;
-  color: #8892a6;
+  color: #64748b;
   font-size: 0.88rem;
   font-weight: 600;
-  border-bottom: 2px solid transparent;
+  border-bottom: 2.5px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
@@ -465,14 +485,16 @@
 }
 
 .story-mode-tab:hover {
-  color: #00f2fe;
+  color: #061e18;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .story-mode-tab.active {
-  color: #00f2fe;
-  border-bottom-color: #00f2fe;
-  background: rgba(0, 242, 254, 0.05);
-  border-radius: 6px 6px 0 0;
+  color: #059669;
+  border-bottom-color: #059669;
+  background: #ffffff;
+  border-radius: 8px 8px 0 0;
+  font-weight: 700;
 }
 
 .story-player {
@@ -512,9 +534,20 @@
 }
 
 @keyframes emojiPop {
-  0% { transform: scale(0.3) rotate(-20deg); opacity: 0; }
-  50% { transform: scale(1.2) rotate(5deg); opacity: 1; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  0% {
+    transform: scale(0.3) rotate(-20deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 .story-step-level {
@@ -550,23 +583,30 @@
 }
 
 @keyframes dangerPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3); }
-  50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
 }
 
 .story-step-title {
-  color: #fff;
+  color: #061e18;
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 8px;
   line-height: 1.4;
 }
 
 .story-step-desc {
-  color: #8892a6;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  max-width: 500px;
+  color: #475569;
+  font-size: 0.96rem;
+  line-height: 1.55;
+  max-width: 520px;
   margin: 0 auto;
 }
 
@@ -639,11 +679,11 @@
 }
 
 .story-nav-btn {
-  padding: 10px 24px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  color: #b0b8c8;
+  padding: 8px 22px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  color: #334155;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -651,42 +691,55 @@
 }
 
 .story-nav-btn:hover:not(:disabled) {
-  background: rgba(0, 242, 254, 0.1);
-  border-color: rgba(0, 242, 254, 0.3);
-  color: #00f2fe;
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #0f172a;
 }
 
 .story-nav-btn:disabled {
-  opacity: 0.3;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
 .story-nav-btn.primary {
-  background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%);
-  border-color: rgba(0, 242, 254, 0.4);
-  color: #00f2fe;
+  background: #059669;
+  border-color: #047857;
+  color: #ffffff;
+}
+
+.story-nav-btn.primary:hover:not(:disabled) {
+  background: #047857;
+  border-color: #065f46;
+  color: #ffffff;
 }
 
 /* Prevention Tip */
 .story-prevention {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(34, 197, 94, 0.02) 100%);
-  border: 1px solid rgba(34, 197, 94, 0.25);
+  background: #ecfdf5 !important;
+  border: 1.5px solid #a7f3d0 !important;
   border-radius: 14px;
-  padding: 20px;
+  padding: 16px 20px;
   margin-top: 16px;
   text-align: left;
   animation: preventionSlide 0.5s ease;
 }
 
 @keyframes preventionSlide {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .story-prevention-title {
-  color: #22c55e;
+  color: #047857 !important;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   margin-bottom: 6px;
   display: flex;
   align-items: center;
@@ -694,9 +747,9 @@
 }
 
 .story-prevention-text {
-  color: #a0aec0;
-  font-size: 0.88rem;
-  line-height: 1.5;
+  color: #064e3b !important;
+  font-size: 0.9rem;
+  line-height: 1.55;
   margin: 0;
 }
 
@@ -881,3 +934,46 @@
   }
 }
 
+/* ==========================================================================
+   Google Translate Silent Integration — Preserves Clean SaaS Appearance
+   ========================================================================== */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+#google_translate_element {
+  display: none !important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.skiptranslate:not(.goog-te-gadget):not(#langSelectorContainer):not(#navLangSwitcherItem) {
+  display: none !important;
+}
+
+font[style] {
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+}

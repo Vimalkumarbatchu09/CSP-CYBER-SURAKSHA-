@@ -24,12 +24,12 @@
 
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-cyber fixed-top">
-    <div class="container">
+    <div class="container-fluid px-3 px-xl-4">
       <a class="navbar-brand" href="{{ url_for('home') }}">
         <div class="brand-icon-wrapper">
           <i class="bi bi-shield-check"></i>
         </div>
-        <span>Cyber <span class="text-cyan">Suraksha</span></span>
+        <span class="notranslate">Cyber <span class="text-cyan">Suraksha</span></span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cyberNavbar"
@@ -99,11 +99,11 @@
   <!-- Header -->
   <section class="hero-section pb-4" data-tts-section style="padding-top: 7rem;">
     <div class="container text-center">
-      <span class="hero-tag">
+      <span class="hero-tag" data-i18n="tools_hero_tag">
         <i class="bi bi-tools"></i> CLIENT-SIDE DEFENSE UTILITIES
       </span>
-      <h1 class="display-4 fw-bold text-white mb-3">Interactive Security Tools</h1>
-      <p class="lead text-secondary mx-auto" style="max-width: 780px;">
+      <h1 class="display-4 fw-bold text-white mb-3" data-i18n="tools_hero_title">Interactive Security Tools</h1>
+      <p class="lead text-secondary mx-auto" style="max-width: 780px;" data-i18n="tools_hero_desc">
         Hands-on demonstration tools to evaluate credential safety, test suspicious messages against phishing
         heuristics, and calculate your personal digital hygiene score.
       </p>
@@ -120,8 +120,8 @@
               <span class="badge bg-primary bg-opacity-20 text-cyan px-3 py-1">Tool #1</span>
               <span class="text-muted small font-mono">Real-Time Evaluation</span>
             </div>
-            <h3 class="text-heading fw-bold mb-3">Password Strength Checker</h3>
-            <p class="text-secondary mb-4">
+            <h3 class="text-heading fw-bold mb-3" data-i18n="tools_pwd_title">Password Strength Checker</h3>
+            <p class="text-secondary mb-4" data-i18n="tools_pwd_desc">
               Type or paste a password below to evaluate its strength, character diversity, and estimated time to crack.
             </p>
 
@@ -389,7 +389,7 @@
             <div class="brand-icon-wrapper">
               <i class="bi bi-shield-lock-fill"></i>
             </div>
-            <span class="fs-4 fw-bold text-white">Cyber <span class="text-cyan">Suraksha</span></span>
+            <span class="fs-4 fw-bold text-white notranslate">Cyber <span class="text-cyan">Suraksha</span></span>
           </div>
           <p class="text-secondary small mb-3" data-i18n="footer_tagline">
             “Building a safer and more cyber-aware digital world.”
