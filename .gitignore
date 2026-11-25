@@ -40,3 +40,13 @@ scratch/
 tmp/
 
 .vercel
+
+
+# Local Academic Reports
+*.tex
+*.aux
+*.out
+*.toc
+*.lot
+*.lof
+*.synctex.gz
