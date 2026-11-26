@@ -128,7 +128,7 @@ def google_login():
     redirect_uri = url_for('auth.google_callback', _external=True)
     if '127.0.0.1' in redirect_uri:
         redirect_uri = redirect_uri.replace('127.0.0.1:5000', 'localhost:5000').replace('127.0.0.1', 'localhost')
-    return oauth.google.authorize_redirect(redirect_uri)
+    return oauth.google.authorize_redirect(redirect_uri, prompt='select_account')
 
 
 @auth_bp.route('/google/callback')
@@ -250,7 +250,9 @@ def logout():
     flash(f"You have been securely logged out. Thank you for using Cyber Suraksha, {user_name}.", "info")
     response = redirect(url_for('auth.login'))
     remember_cookie = current_app.config.get('REMEMBER_COOKIE_NAME', 'remember_token')
+    session_cookie = current_app.config.get('SESSION_COOKIE_NAME', 'session')
     cookie_path = current_app.config.get('REMEMBER_COOKIE_PATH', '/')
     cookie_domain = current_app.config.get('REMEMBER_COOKIE_DOMAIN', None)
     response.delete_cookie(remember_cookie, path=cookie_path, domain=cookie_domain)
+    response.delete_cookie(session_cookie, path='/', domain=cookie_domain)
     return response

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Cyber Suraksha</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="background-color: #f8fafc; color: #1e293b; padding: 2rem 1rem;">
+  <div class="container" style="max-width: 800px;">
+    <div class="card p-4 p-md-5 shadow-sm border-0 rounded-4 bg-white">
+      <div class="d-flex align-items-center gap-2 mb-4">
+        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary btn-sm">&larr; Back to Login</a>
+      </div>
+      <h1 class="h3 fw-bold mb-3">Privacy Policy for Cyber Suraksha</h1>
+      <p class="text-muted small mb-4">Last Updated: November 2026 &bull; Community Service Project</p>
+
+      <h2 class="h5 fw-bold mt-3">1. Overview</h2>
+      <p>Cyber Suraksha is an educational community service project created by students of Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology. Our mission is to raise digital safety and cybercrime awareness among residents of Morai and surrounding communities.</p>
+
+      <h2 class="h5 fw-bold mt-4">2. Information We Collect</h2>
+      <p>We only collect minimal information necessary to deliver educational tracking and user authentication:</p>
+      <ul>
+        <li><strong>Account Information:</strong> When you register or sign in via Google OAuth, we receive your name and verified email address to maintain your user account.</li>
+        <li><strong>Educational Progress:</strong> Quiz scores, completed scenario modules, and security checklists to help you measure your cybersecurity awareness.</li>
+      </ul>
+
+      <h2 class="h5 fw-bold mt-4">3. How We Use Information</h2>
+      <p>Your information is used strictly for non-commercial educational purposes:</p>
+      <ul>
+        <li>To authenticate your access to educational modules.</li>
+        <li>To display your individual learning progress and quiz badges on your personal dashboard.</li>
+        <li>We <strong>do not sell, rent, or share</strong> your personal information with any third parties or advertisers.</li>
+      </ul>
+
+      <h2 class="h5 fw-bold mt-4">4. Security Measures</h2>
+      <p>We implement industry-standard security safeguards including salted Bcrypt password hashing (cost factor 12), HTTPS transport encryption, Cross-Site Request Forgery (CSRF) tokens, and strict anti-caching response headers.</p>
+
+      <h2 class="h5 fw-bold mt-4">5. Contact Us</h2>
+      <p>If you have questions about this privacy policy or your data, please contact the project team at <a href="mailto:vimalkumarbatchu@gmail.com">vimalkumarbatchu@gmail.com</a>.</p>
+    </div>
+  </div>
+</body>
+</html>

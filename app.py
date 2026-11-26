@@ -105,8 +105,8 @@ with app.app_context():
 # Security Headers & Anti-Caching Filter (Strict Back-Navigation Protection)
 @app.after_request
 def add_security_headers(response):
-    # Prevent browser caching of protected content
-    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0, private'
+    # Prevent browser and proxy CDN caching of protected content
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0, s-maxage=0, private'
     response.headers['Pragma'] = 'no-cache'
     response.headers['Expires'] = '-1'
     # Defense-in-depth headers
@@ -193,6 +193,12 @@ def contact():
 @login_required
 def about():
     return render_template('site/about.html', active_page='about')
+
+
+# Public informational routes (Required for Google OAuth verification)
+@app.route('/privacy')
+def privacy_policy():
+    return render_template('site/privacy.html')
 
 
 if __name__ == '__main__':
